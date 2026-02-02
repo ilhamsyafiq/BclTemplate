@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Modal Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+// ╔══════════════════════════════════════════════════════════════════════════════╗
+// ║                        EDIT YOUR CONTENT HERE                                 ║
+// ╚══════════════════════════════════════════════════════════════════════════════╝
+const CONFIG = {
+    brand: { name: "YourBrand", icon: "storefront", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+
+    // MODAL SETTINGS
+    modal: {
+        title: "Selamat Datang!",
+        subtitle: "Tawaran Eksklusif Untuk Anda",
+        description: "Dapatkan diskaun 20% untuk pembelian pertama anda. Masukkan email untuk tebus tawaran ini.",
+        image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600",
+        buttonText: "Tebus Sekarang",
+        closeText: "Tidak, terima kasih"
+    },
+
+    // HERO SECTION
+    hero: {
+        badge: "Produk Terlaris 2026",
+        title: "Produk Berkualiti Untuk Anda",
+        description: "Temui koleksi produk terbaik kami dengan harga yang berpatutan."
+    },
+
+    // GALLERY
+    gallery: [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"
+    ],
+
+    // FEATURES
+    features: {
+        title: "Kenapa Pilih Kami?",
+        subtitle: "Kelebihan membeli dengan kami",
+        items: [
+            { icon: "verified", title: "Produk Original", desc: "100% produk asli dengan jaminan" },
+            { icon: "local_shipping", title: "Penghantaran Pantas", desc: "Sampai dalam 1-3 hari bekerja" },
+            { icon: "support_agent", title: "Sokongan 24/7", desc: "Kami sentiasa ada untuk membantu" }
+        ]
+    },
+
+    // TESTIMONIALS
+    testimonials: [
+        { name: "Ahmad", role: "Pelanggan Setia", text: "Produk sangat berkualiti dan penghantaran cepat!" },
+        { name: "Siti", role: "Pembeli Pertama", text: "Harga berpatutan, kualiti terjamin." },
+        { name: "Rizal", role: "Pelanggan VIP", text: "Servis customer support terbaik!" }
+    ]
+};
+</script>
+
+<style>
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f172a; }
+html { scroll-behavior: smooth; }
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 1.5rem;
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+    animation: modalSlideIn 0.4s ease-out;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-hidden {
+    display: none !important;
+}
+
+/* Prevent scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+</style>
+
+<div id="app" class="bg-[#0f172a] text-white min-h-screen"></div>
+
+<!-- MODAL -->
+<div id="welcomeModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="relative">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 bg-black/20 hover:bg-black/40 rounded-full flex items-center justify-center text-white transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+
+            <!-- Modal Image -->
+            <div class="h-48 bg-gradient-to-br from-violet-500 to-pink-500 relative overflow-hidden">
+                <img id="modalImage" src="" alt="Promo" class="w-full h-full object-cover opacity-80"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-8 text-center">
+                <h2 id="modalTitle" class="text-3xl font-bold text-gray-900 mb-2"></h2>
+                <p id="modalSubtitle" class="text-violet-600 font-semibold mb-4"></p>
+                <p id="modalDescription" class="text-gray-600 mb-6"></p>
+
+                <!-- CTA Button -->
+                <a href="#payment-form" onclick="closeModal()" id="modalButton" class="block w-full bg-gradient-to-r from-violet-500 to-pink-500 text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity mb-4"></a>
+
+                <!-- Close Link -->
+                <button onclick="closeModal()" id="modalCloseText" class="text-gray-400 hover:text-gray-600 text-sm transition-colors"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Modal Functions
+function closeModal() {
+    document.getElementById('welcomeModal').classList.add('modal-hidden');
+    document.body.classList.remove('modal-open');
+}
+
+function openModal() {
+    document.getElementById('welcomeModal').classList.remove('modal-hidden');
+    document.body.classList.add('modal-open');
+}
+
+// Initialize Modal Content
+function initModal() {
+    const c = CONFIG.modal;
+    document.getElementById('modalImage').src = c.image;
+    document.getElementById('modalTitle').textContent = c.title;
+    document.getElementById('modalSubtitle').textContent = c.subtitle;
+    document.getElementById('modalDescription').textContent = c.description;
+    document.getElementById('modalButton').textContent = c.buttonText;
+    document.getElementById('modalCloseText').textContent = c.closeText;
+
+    // Open modal on page load
+    document.body.classList.add('modal-open');
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// Close modal when clicking outside
+document.getElementById('welcomeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+function render() {
+    const c = CONFIG;
+
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen text-white">
+            <!-- Gradient background -->
+            <div class="fixed inset-0 -z-10">
+                <div class="absolute top-0 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <!-- Nav -->
+            <nav class="px-6 py-6">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-violet-400">${c.brand.icon}</span>
+                        <span class="font-bold text-xl">${c.brand.name}</span>
+                    </div>
+                    <a href="#payment-form" class="bg-gradient-to-r from-violet-500 to-pink-500 px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90">Daftar Sekarang</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="px-6 py-24">
+                <div class="max-w-4xl mx-auto text-center">
+                    <span class="inline-block bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-8">${c.hero.badge}</span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">${c.hero.title}</h1>
+                    <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">${c.hero.description}</p>
+                    <div class="flex gap-4 justify-center">
+                        <a href="#payment-form" class="bg-gradient-to-r from-violet-500 to-pink-500 px-8 py-4 rounded-full font-semibold hover:opacity-90">Daftar Sekarang</a>
+                    </div>
+                </div>
+                <div class="max-w-5xl mx-auto mt-16">
+                    <div class="bg-gradient-to-r from-violet-500 to-pink-500 p-1 rounded-2xl">
+                        <div class="bg-[#0f172a] rounded-2xl p-2">
+                            <img src="${c.gallery[0]}" alt="Product" class="rounded-xl w-full"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="px-6 py-24">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-bold mb-4">${c.features.title}</h2>
+                        <p class="text-gray-400">${c.features.subtitle}</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        ${c.features.items.map(f => `
+                            <div class="bg-white/5 backdrop-blur p-8 rounded-2xl border border-white/10 hover:border-violet-500/50 transition-colors">
+                                <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-pink-500 rounded-xl flex items-center justify-center mb-4">
+                                    <span class="material-symbols-outlined">${f.icon}</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">${f.title}</h3>
+                                <p class="text-gray-400">${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="px-6 py-24">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-4xl font-bold text-center mb-16">Apa Kata Pelanggan</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-white/5 backdrop-blur p-8 rounded-2xl border border-white/10">
+                                <p class="text-gray-300 mb-6">"${t.text}"</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-violet-500 to-pink-500 rounded-full"></div>
+                                    <div>
+                                        <div class="font-semibold">${t.name}</div>
+                                        <div class="text-sm text-gray-500">${t.role}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-24">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold mb-8">Daftar Sekarang</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="border-t border-white/10 px-6 py-8">
+                <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+
+// Initialize
+render();
+initModal();
+</script>
+</body>
+</html>

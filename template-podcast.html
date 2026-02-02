@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Podcast Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "The Hustle Show", tagline: "Stories of Malaysian Entrepreneurs" },
+    hero: {
+        title: "Real Stories. Real Struggles. Real Success.",
+        description: "Weekly conversations with Malaysia's most inspiring entrepreneurs and business leaders.",
+        image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600"
+    },
+    stats: { episodes: "150+", downloads: "2M+", rating: "4.9" },
+    platforms: [
+        { name: "Spotify", url: "#", icon: "https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" },
+        { name: "Apple Podcasts", url: "#", icon: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Podcasts_%28iOS%29.svg" },
+        { name: "YouTube", url: "#", icon: "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" }
+    ],
+    latestEpisodes: [
+        { number: "#150", title: "From Warung to RM10M Empire", guest: "Dato' Azman", duration: "58 min", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200" },
+        { number: "#149", title: "Building a Unicorn Startup", guest: "Sarah Lim", duration: "1hr 12min", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200" },
+        { number: "#148", title: "The Art of Failure", guest: "Hafiz Rahman", duration: "45 min", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200" }
+    ],
+    hosts: [
+        { name: "Adam Shah", role: "Host", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200", bio: "Serial entrepreneur & investor" },
+        { name: "Maya Chen", role: "Co-Host", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200", bio: "Former tech journalist" }
+    ],
+    newsletter: {
+        title: "Never Miss an Episode",
+        description: "Get weekly episode summaries and exclusive content straight to your inbox."
+    }
+};
+</script>
+<style>
+body { font-family: 'Space Grotesk', sans-serif; background: #0a0a0a; }
+</style>
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen text-white">
+            <!-- Nav -->
+            <nav class="px-6 py-6">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div>
+                        <div class="text-2xl font-bold">${c.brand.name}</div>
+                        <div class="text-sm text-gray-500">${c.brand.tagline}</div>
+                    </div>
+                    <a href="#subscribe" class="bg-purple-600 px-6 py-3 rounded-full font-medium hover:bg-purple-700">Subscribe</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="px-6 py-20">
+                <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">${c.hero.title}</h1>
+                        <p class="text-xl text-gray-400 mb-8">${c.hero.description}</p>
+
+                        <!-- Stats -->
+                        <div class="flex gap-8 mb-10">
+                            <div><div class="text-3xl font-bold text-purple-400">${c.stats.episodes}</div><div class="text-gray-500">Episodes</div></div>
+                            <div><div class="text-3xl font-bold text-purple-400">${c.stats.downloads}</div><div class="text-gray-500">Downloads</div></div>
+                            <div><div class="text-3xl font-bold text-purple-400">⭐ ${c.stats.rating}</div><div class="text-gray-500">Rating</div></div>
+                        </div>
+
+                        <!-- Listen On -->
+                        <div class="flex gap-4">
+                            ${c.platforms.map(p => `
+                                <a href="${p.url}" class="bg-zinc-800 hover:bg-zinc-700 px-6 py-3 rounded-full flex items-center gap-2 transition-colors">
+                                    <img src="${p.icon}" class="w-6 h-6"/>
+                                    ${p.name}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl transform rotate-3"></div>
+                        <img src="${c.hero.image}" class="relative rounded-3xl w-full"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Episodes -->
+            <section class="px-6 py-20 bg-zinc-900">
+                <div class="max-w-6xl mx-auto">
+                    <div class="flex items-center justify-between mb-12">
+                        <h2 class="text-3xl font-bold">Latest Episodes</h2>
+                        <a href="#" class="text-purple-400 hover:text-purple-300">View All →</a>
+                    </div>
+                    <div class="space-y-4">
+                        ${c.latestEpisodes.map(ep => `
+                            <div class="bg-zinc-800 rounded-2xl p-6 flex items-center gap-6 hover:bg-zinc-700 transition-colors cursor-pointer group">
+                                <img src="${ep.image}" class="w-20 h-20 rounded-xl object-cover"/>
+                                <div class="flex-1">
+                                    <span class="text-purple-400 text-sm font-medium">${ep.number}</span>
+                                    <h3 class="text-xl font-semibold mb-1">${ep.title}</h3>
+                                    <p class="text-gray-400">with ${ep.guest} • ${ep.duration}</p>
+                                </div>
+                                <button class="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center group-hover:bg-purple-500 transition-colors">
+                                    <span class="material-symbols-outlined text-2xl">play_arrow</span>
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hosts -->
+            <section class="px-6 py-20">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12">Meet Your Hosts</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        ${c.hosts.map(h => `
+                            <div class="bg-zinc-900 rounded-2xl p-8 text-center">
+                                <img src="${h.image}" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover"/>
+                                <h3 class="text-2xl font-semibold">${h.name}</h3>
+                                <div class="text-purple-400 mb-4">${h.role}</div>
+                                <p class="text-gray-400">${h.bio}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter -->
+            <section id="subscribe" class="px-6 py-20 bg-gradient-to-br from-purple-900 to-pink-900">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold mb-4">${c.newsletter.title}</h2>
+                    <p class="text-xl text-purple-200 mb-8">${c.newsletter.description}</p>
+                    <form class="flex flex-col md:flex-row gap-4">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 focus:outline-none focus:border-purple-400"/>
+                        <button class="bg-white text-purple-900 px-8 py-4 rounded-full font-semibold hover:bg-purple-100">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+            <footer class="bg-black px-6 py-8">
+                <div class="max-w-6xl mx-auto text-center text-gray-500">
+                    © 2026 Ilham Syafiq. All Rights Reserved.
+                </div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

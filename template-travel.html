@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Travel Agency Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "WanderMY", icon: "flight_takeoff" },
+    hero: {
+        title: "Discover Your Next Adventure",
+        subtitle: "Curated travel experiences across Malaysia and beyond",
+        image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1200"
+    },
+    packages: [
+        { name: "Langkawi Paradise", days: "4D3N", price: "RM899", image: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=400", rating: 4.9 },
+        { name: "Cameron Highlands", days: "3D2N", price: "RM599", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=400", rating: 4.8 },
+        { name: "Sabah Adventure", days: "5D4N", price: "RM1,299", image: "https://images.unsplash.com/photo-1571366343168-631c5bcca7a4?w=400", rating: 4.9 },
+        { name: "Penang Heritage", days: "3D2N", price: "RM649", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=400", rating: 4.7 }
+    ],
+    features: [
+        { icon: "verified", text: "Licensed & Insured" },
+        { icon: "support_agent", text: "24/7 Support" },
+        { icon: "payments", text: "Flexible Payment" },
+        { icon: "thumb_up", text: "Best Price Guarantee" }
+    ],
+    testimonials: [
+        { name: "Farah", trip: "Langkawi", text: "Amazing experience! Everything was perfectly arranged." },
+        { name: "Kevin", trip: "Sabah", text: "Best travel agency I've ever used. Will book again!" }
+    ],
+    contact: { phone: "+60 12-345 6789", whatsapp: "60123456789", email: "hello@wandermy.com" }
+};
+</script>
+<style>body { font-family: 'Poppins', sans-serif; }</style>
+<div id="app"></div>
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen bg-white">
+            <nav class="absolute top-0 left-0 right-0 z-50 px-6 py-6">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-white">
+                        <span class="material-symbols-outlined text-3xl">${c.brand.icon}</span>
+                        <span class="font-bold text-2xl">${c.brand.name}</span>
+                    </div>
+                    <a href="#payment-form" class="bg-white text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-gray-100">Daftar Sekarang</a>
+                </div>
+            </nav>
+
+            <section class="relative h-screen">
+                <img src="${c.hero.image}" class="w-full h-full object-cover"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-center text-white px-6">
+                    <div>
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6">${c.hero.title}</h1>
+                        <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">${c.hero.subtitle}</p>
+                        <a href="#payment-form" class="inline-block bg-teal-500 text-white px-10 py-4 rounded-full font-semibold hover:bg-teal-600">Daftar Sekarang</a>
+                    </div>
+                </div>
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white animate-bounce">
+                    <span class="material-symbols-outlined text-3xl">expand_more</span>
+                </div>
+            </section>
+
+            <section class="bg-teal-500 text-white py-6">
+                <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-center gap-8">
+                    ${c.features.map(f => `<div class="flex items-center gap-2"><span class="material-symbols-outlined">${f.icon}</span>${f.text}</div>`).join('')}
+                </div>
+            </section>
+
+            <section class="px-6 py-20 bg-gray-50">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold text-center mb-16">Happy Travelers</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-white p-8 rounded-2xl shadow-md">
+                                <div class="flex gap-1 mb-4">${Array(5).fill('<span class="material-symbols-outlined text-yellow-400">star</span>').join('')}</div>
+                                <p class="text-gray-700 mb-6">"${t.text}"</p>
+                                <div><span class="font-semibold">${t.name}</span> <span class="text-gray-500">• ${t.trip} Trip</span></div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-20 bg-teal-600 text-white">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold mb-6">Ready for Your Next Trip?</h2>
+                    <p class="text-xl text-teal-100 mb-10">Contact us to plan your perfect getaway</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#payment-form" class="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 flex items-center gap-2">
+                            Daftar Sekarang
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-20">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-8">Daftar Sekarang</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <footer class="bg-gray-900 text-gray-400 px-6 py-8 text-center">
+                © 2026 Ilham Syafiq. All Rights Reserved.
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

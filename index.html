@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Template Gallery - Choose Your Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const TEMPLATES = [
+    // STYLE TEMPLATES
+    { name: "Minimal", file: "template-minimal.html", desc: "Clean & simple with lots of white space", colors: ["#000000", "#ffffff"], tags: ["Light", "Style"], category: "Style" },
+    { name: "Gradient", file: "template-gradient.html", desc: "Modern with vibrant gradient backgrounds", colors: ["#8b5cf6", "#ec4899"], tags: ["Dark", "Style"], category: "Style" },
+    { name: "Cards", file: "template-cards.html", desc: "Card-focused layout with shadows", colors: ["#2563eb", "#f8fafc"], tags: ["Light", "Style"], category: "Style" },
+    { name: "Split", file: "template-split.html", desc: "Split-screen hero with alternating sections", colors: ["#059669", "#ffffff"], tags: ["Light", "Style"], category: "Style" },
+    { name: "Dark", file: "template-dark.html", desc: "Cyber/tech dark theme with grid pattern", colors: ["#22d3ee", "#09090b"], tags: ["Dark", "Style"], category: "Style" },
+    { name: "Playful", file: "template-playful.html", desc: "Fun & colorful with floating shapes", colors: ["#f59e0b", "#8b5cf6"], tags: ["Light", "Style"], category: "Style" },
+    { name: "Corporate", file: "template-corporate.html", desc: "Professional enterprise style", colors: ["#1e40af", "#ffffff"], tags: ["Light", "Style"], category: "Style" },
+    { name: "Bold", file: "template-bold.html", desc: "Bold typography, high contrast", colors: ["#dc2626", "#000000"], tags: ["Dark", "Style"], category: "Style" },
+    { name: "Glass", file: "template-glass.html", desc: "Glassmorphism with blur effects", colors: ["#0ea5e9", "#a855f7"], tags: ["Dark", "Style"], category: "Style" },
+    { name: "Warm", file: "template-warm.html", desc: "Warm & friendly with serif headings", colors: ["#b45309", "#fffbeb"], tags: ["Light", "Style"], category: "Style" },
+
+    // FEATURE TEMPLATES
+    { name: "Notification", file: "template-notification.html", desc: "Social proof with purchase popups", colors: ["#6366f1", "#ffffff"], tags: ["Light", "Feature"], category: "Feature" },
+    { name: "Countdown", file: "template-countdown.html", desc: "Flash sale with countdown timer", colors: ["#eab308", "#1a1a2e"], tags: ["Dark", "Feature"], category: "Feature" },
+    { name: "Modal Popup", file: "template-modal.html", desc: "Welcome modal popup on page load", colors: ["#8b5cf6", "#ec4899"], tags: ["Dark", "Feature"], category: "Feature" },
+
+    // NICHE TEMPLATES
+    { name: "Restaurant", file: "template-restaurant.html", desc: "Food & restaurant with menu display", colors: ["#d97706", "#1c1917"], tags: ["Dark", "Niche"], category: "Niche" },
+    { name: "Webinar", file: "template-webinar.html", desc: "Event registration with countdown", colors: ["#8b5cf6", "#0f172a"], tags: ["Dark", "Niche"], category: "Niche" },
+    { name: "Fitness", file: "template-fitness.html", desc: "Gym & fitness with bold design", colors: ["#dc2626", "#0a0a0a"], tags: ["Dark", "Niche"], category: "Niche" },
+    { name: "Real Estate", file: "template-realestate.html", desc: "Property listing with gallery", colors: ["#d97706", "#fafaf9"], tags: ["Light", "Niche"], category: "Niche" },
+    { name: "Online Course", file: "template-course.html", desc: "Course sales with curriculum", colors: ["#9333ea", "#f9fafb"], tags: ["Light", "Niche"], category: "Niche" },
+    { name: "Beauty Salon", file: "template-beauty.html", desc: "Spa & beauty with elegant design", colors: ["#fb7185", "#fdf8f5"], tags: ["Light", "Niche"], category: "Niche" },
+    { name: "Charity", file: "template-charity.html", desc: "Donation page with progress bar", colors: ["#14b8a6", "#f9fafb"], tags: ["Light", "Niche"], category: "Niche" },
+    { name: "Podcast", file: "template-podcast.html", desc: "Podcast show with episodes list", colors: ["#a855f7", "#0a0a0a"], tags: ["Dark", "Niche"], category: "Niche" },
+    { name: "SaaS", file: "template-saas.html", desc: "Software product with pricing", colors: ["#6366f1", "#ffffff"], tags: ["Light", "Niche"], category: "Niche" },
+    { name: "Fashion", file: "template-fashion.html", desc: "Fashion store with elegant style", colors: ["#000000", "#fafafa"], tags: ["Light", "Niche"], category: "Niche" },
+    { name: "Travel", file: "template-travel.html", desc: "Travel agency with packages", colors: ["#14b8a6", "#ffffff"], tags: ["Light", "Niche"], category: "Niche" },
+    { name: "Coaching", file: "template-coaching.html", desc: "Life coach with testimonials", colors: ["#d97706", "#fdfbf7"], tags: ["Light", "Niche"], category: "Niche" },
+    { name: "Wedding", file: "template-wedding.html", desc: "Wedding invitation with RSVP", colors: ["#fb7185", "#fdf8f4"], tags: ["Light", "Niche"], category: "Niche" }
+];
+
+const CATEGORIES = ["All", "Style", "Feature", "Niche"];
+const THEMES = ["All", "Light", "Dark"];
+</script>
+
+<style>
+body { font-family: 'Inter', sans-serif; background: #0a0a0a; user-select: none; -webkit-user-select: none; }
+.card-hover { transition: all 0.3s ease; }
+.card-hover:hover { transform: translateY(-8px); }
+.preview-frame { transform: scale(0.25); transform-origin: top left; width: 400%; height: 400%; pointer-events: none; }
+</style>
+
+<script>
+// ========== SOURCE CODE PROTECTION (Deterrents Only) ==========
+// Note: This only deters casual users. Determined users can bypass these.
+
+// Disable right-click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable keyboard shortcuts
+document.addEventListener('keydown', e => {
+    // F12
+    if (e.key === 'F12') e.preventDefault();
+    // Ctrl+Shift+I (DevTools)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') e.preventDefault();
+    // Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') e.preventDefault();
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && e.key === 'u') e.preventDefault();
+    // Ctrl+S (Save)
+    if (e.ctrlKey && e.key === 's') e.preventDefault();
+    // Ctrl+Shift+C (Inspect Element)
+    if (e.ctrlKey && e.shiftKey && e.key === 'C') e.preventDefault();
+});
+
+// Detect DevTools open (basic detection)
+let devtoolsOpen = false;
+const threshold = 160;
+setInterval(() => {
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    if (widthThreshold || heightThreshold) {
+        if (!devtoolsOpen) {
+            devtoolsOpen = true;
+            document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;color:#fff;font-size:24px;text-align:center;padding:20px;">⚠️ Developer tools detected.<br>Please close to continue.</div>';
+        }
+    }
+}, 1000);
+
+// Disable drag
+document.addEventListener('dragstart', e => e.preventDefault());
+
+// Clear console
+console.clear();
+console.log('%c⚠️ Stop!', 'color: red; font-size: 50px; font-weight: bold;');
+console.log('%cThis is a protected page.', 'font-size: 18px;');
+</script>
+
+<div id="app"></div>
+
+<script>
+let currentCategory = 'All';
+let currentTheme = 'All';
+
+function render() {
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen text-white">
+            <!-- Header -->
+            <header class="border-b border-white/10 px-6 py-8">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold">Template Gallery</h1>
+                            <p class="text-gray-400 mt-2">Choose a style for your landing page</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <span class="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded-full text-sm font-semibold">${TEMPLATES.length} Templates</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Filters -->
+            <section class="px-6 py-6 border-b border-white/5">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-wrap gap-6 items-center">
+                        <div>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider block mb-2">Category</span>
+                            <div class="flex gap-2">
+                                ${CATEGORIES.map(cat => `
+                                    <button onclick="filterCategory('${cat}')" class="cat-btn px-4 py-2 rounded-full text-sm font-medium ${currentCategory === cat ? 'bg-white text-black' : 'bg-white/10 hover:bg-white/20'}" data-cat="${cat}">${cat}</button>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider block mb-2">Theme</span>
+                            <div class="flex gap-2">
+                                ${THEMES.map(theme => `
+                                    <button onclick="filterTheme('${theme}')" class="theme-btn px-4 py-2 rounded-full text-sm font-medium ${currentTheme === theme ? 'bg-white text-black' : 'bg-white/10 hover:bg-white/20'}" data-theme="${theme}">${theme}</button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Template Grid -->
+            <section class="px-6 py-12">
+                <div class="max-w-7xl mx-auto">
+                    <div id="template-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        ${TEMPLATES.map(t => `
+                            <a href="${t.file}" class="card-hover template-card block group" data-tags="${t.tags.join(',')}" data-category="${t.category}">
+                                <div class="bg-zinc-900 rounded-2xl overflow-hidden border border-white/10 hover:border-white/30">
+                                    <div class="relative h-48 overflow-hidden bg-zinc-800">
+                                        <iframe src="${t.file}" class="preview-frame" loading="lazy"></iframe>
+                                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent"></div>
+                                        <div class="absolute top-3 left-3">
+                                            <span class="bg-black/50 backdrop-blur px-2 py-1 rounded text-xs">${t.category}</span>
+                                        </div>
+                                        <div class="absolute bottom-3 left-3 flex gap-1">
+                                            ${t.colors.map(c => `<div class="w-4 h-4 rounded-full border border-white/20" style="background:${c}"></div>`).join('')}
+                                        </div>
+                                    </div>
+                                    <div class="p-5">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="font-semibold text-lg">${t.name}</h3>
+                                            <span class="material-symbols-outlined text-gray-500 group-hover:text-white group-hover:translate-x-1 transition-all">arrow_forward</span>
+                                        </div>
+                                        <p class="text-gray-400 text-sm mb-4">${t.desc}</p>
+                                        <div class="flex gap-2">
+                                            ${t.tags.map(tag => `<span class="bg-white/5 px-2 py-1 rounded text-xs text-gray-400">${tag}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+           
+            </section>
+
+            <!-- Footer -->
+            <footer class="border-t border-white/10 px-6 py-8">
+                <div class="max-w-7xl mx-auto text-center text-gray-500 text-sm">
+                    © 2026 Ilham Syafiq. All Rights Reserved.
+                </div>
+            </footer>
+        </div>
+    `;
+}
+
+function filterCategory(cat) {
+    currentCategory = cat;
+    applyFilters();
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.className = btn.dataset.cat === cat
+            ? 'cat-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-black'
+            : 'cat-btn px-4 py-2 rounded-full text-sm font-medium bg-white/10 hover:bg-white/20';
+    });
+}
+
+function filterTheme(theme) {
+    currentTheme = theme;
+    applyFilters();
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.className = btn.dataset.theme === theme
+            ? 'theme-btn px-4 py-2 rounded-full text-sm font-medium bg-white text-black'
+            : 'theme-btn px-4 py-2 rounded-full text-sm font-medium bg-white/10 hover:bg-white/20';
+    });
+}
+
+function applyFilters() {
+    document.querySelectorAll('.template-card').forEach(card => {
+        const tags = card.dataset.tags;
+        const category = card.dataset.category;
+        const matchesCat = currentCategory === 'All' || category === currentCategory;
+        const matchesTheme = currentTheme === 'All' || tags.includes(currentTheme);
+        card.style.display = (matchesCat && matchesTheme) ? 'block' : 'none';
+    });
+}
+
+render();
+</script>
+</body>
+</html>

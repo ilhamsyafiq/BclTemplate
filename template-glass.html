@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BCL.my - Glass Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+// ╔══════════════════════════════════════════════════════════════════════════════╗
+// ║                        EDIT YOUR CONTENT HERE                                 ║
+// ╚══════════════════════════════════════════════════════════════════════════════╝
+const CONFIG = {
+    brand: { name: "BCL.my", icon: "payments", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    colors: { primary: "#0ea5e9", secondary: "#a855f7" },
+    hero: {
+        badge: "All-in-One Platform",
+        title: "Beautiful payments for modern businesses",
+        description: "Create stunning QR terminals, payment forms, and landing pages with our intuitive platform."
+    },
+    gallery: [
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-new/bcl-dashboard.png"
+    ],
+    features: {
+        title: "Why BCL.my?",
+        subtitle: "Everything you need in one place",
+        items: [
+            { icon: "qr_code_2", title: "Smart QR", desc: "Dynamic DuitNow QR codes" },
+            { icon: "web", title: "Page Builder", desc: "No-code landing pages" },
+            { icon: "receipt_long", title: "E-Invoice", desc: "LHDN compliant" },
+            { icon: "insights", title: "Analytics", desc: "Real-time insights" }
+        ]
+    },
+    testimonials: [
+        { name: "Adly Mukhtar", role: "Sihaté", text: "Payment verification is now automatic. Huge time saver!" },
+        { name: "Nurnabilah", role: "AMRU", text: "Our conversion rates improved significantly with BCL." },
+        { name: "Maisarah", role: "Designer", text: "My clients love how easy it is to pay now." }
+    ],
+    packages: {
+        title: "Simple Pricing",
+        items: [
+            { name: "Free", price: "RM0", badge: null, features: ["Unlimited forms", "Basic support", "FPX RM1.00"], buttonText: "Start Free", buttonLink: "#" },
+            { name: "Pro", price: "RM1,888/yr", badge: "Popular", features: ["All features", "Free domains", "Priority support"], buttonText: "Get Pro", buttonLink: "#" }
+        ]
+    }
+};
+</script>
+
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0c1222 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
+}
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.glass-strong {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+</style>
+
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen text-white relative">
+            <!-- Gradient orbs -->
+            <div class="fixed inset-0 -z-10 overflow-hidden">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/30 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"></div>
+                <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <!-- Nav -->
+            <nav class="px-6 py-6">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 glass-strong rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-sky-400">${c.brand.icon}</span>
+                        </div>
+                        <span class="font-semibold text-lg">${c.brand.name}</span>
+                    </div>
+                    <a href="#payment-form" class="glass-strong px-6 py-2.5 rounded-full font-medium hover:bg-white/20 transition-colors">Daftar Sekarang</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="px-6 py-24">
+                <div class="max-w-4xl mx-auto text-center">
+                    <span class="inline-block glass px-4 py-2 rounded-full text-sm text-sky-300 mb-8">${c.hero.badge}</span>
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 bg-gradient-to-r from-white via-sky-200 to-purple-200 bg-clip-text text-transparent">${c.hero.title}</h1>
+                    <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">${c.hero.description}</p>
+                    <div class="flex gap-4 justify-center">
+                        <a href="#payment-form" class="bg-gradient-to-r from-sky-500 to-purple-500 px-8 py-4 rounded-full font-semibold hover:opacity-90 shadow-lg shadow-sky-500/25">Daftar Sekarang</a>
+                    </div>
+                </div>
+                <div class="max-w-5xl mx-auto mt-20">
+                    <div class="glass-strong rounded-3xl p-3">
+                        <img src="${c.gallery[0]}" alt="Dashboard" class="rounded-2xl w-full"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="px-6 py-24">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">${c.features.title}</h2>
+                        <p class="text-gray-400">${c.features.subtitle}</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${c.features.items.map(f => `
+                            <div class="glass rounded-2xl p-8 hover:bg-white/10 transition-colors group">
+                                <div class="w-14 h-14 glass-strong rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                    <span class="material-symbols-outlined text-sky-400">${f.icon}</span>
+                                </div>
+                                <h3 class="text-lg font-semibold mb-2">${f.title}</h3>
+                                <p class="text-gray-400 text-sm">${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="px-6 py-24">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-16">Loved by businesses</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        ${c.testimonials.map(t => `
+                            <div class="glass rounded-2xl p-8">
+                                <div class="flex gap-1 mb-4">
+                                    ${[1,2,3,4,5].map(() => '<span class="material-symbols-outlined text-yellow-400 text-sm">star</span>').join('')}
+                                </div>
+                                <p class="text-gray-300 mb-6">"${t.text}"</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-sky-400 to-purple-400 rounded-full"></div>
+                                    <div>
+                                        <div class="font-semibold text-sm">${t.name}</div>
+                                        <div class="text-xs text-gray-500">${t.role}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-20">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-8">Daftar Sekarang</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="px-6 py-24">
+                <div class="max-w-4xl mx-auto">
+                    <div class="glass-strong rounded-3xl p-12 md:p-16 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to get started?</h2>
+                        <p class="text-gray-400 mb-10">Join thousands of Malaysian businesses using BCL.my</p>
+                        <a href="#payment-form" class="inline-block bg-gradient-to-r from-sky-500 to-purple-500 px-10 py-4 rounded-full font-semibold hover:opacity-90 shadow-lg shadow-sky-500/25">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="px-6 py-8 border-t border-white/5">
+                <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Real Estate Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "Luxury Homes", icon: "villa", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    hero: {
+        badge: "Exclusive Listing",
+        title: "Bangsar Hill Residence",
+        subtitle: "Where Luxury Meets Lifestyle",
+        price: "RM 4,500,000",
+        image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200"
+    },
+    property: {
+        beds: 5,
+        baths: 6,
+        sqft: "6,500",
+        type: "Bungalow",
+        year: 2023,
+        tenure: "Freehold"
+    },
+    features: [
+        "Private swimming pool",
+        "Smart home automation",
+        "Wine cellar",
+        "Home theater",
+        "4-car garage",
+        "Landscaped garden",
+        "Maid's quarters",
+        "Security system 24/7"
+    ],
+    gallery: [
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600",
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600"
+    ],
+    agent: {
+        name: "Sarah Tan",
+        title: "Senior Property Consultant",
+        phone: "+60 12-345 6789",
+        email: "sarah@luxuryhomes.my",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200"
+    },
+    location: {
+        address: "Jalan Bangsar Hill, 59100 Kuala Lumpur",
+        nearby: ["5 min to Bangsar Shopping Centre", "10 min to KL Sentral", "15 min to KLCC"]
+    }
+};
+</script>
+<style>
+body { font-family: 'Montserrat', sans-serif; background: #fafaf9; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+</style>
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen">
+            <!-- Nav -->
+            <nav class="absolute top-0 left-0 right-0 z-50 px-6 py-6">
+                <div class="max-w-7xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-white">
+                        <span class="material-symbols-outlined text-3xl">${c.brand.icon}</span>
+                        <span class="font-semibold text-xl">${c.brand.name}</span>
+                    </div>
+                    <a href="tel:${c.agent.phone}" class="bg-white text-stone-900 px-6 py-3 font-medium hover:bg-stone-100">Schedule Viewing</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="relative h-screen">
+                <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('${c.hero.image}') center/cover"></div>
+                <div class="relative h-full flex items-end px-6 pb-20">
+                    <div class="max-w-7xl mx-auto w-full">
+                        <span class="inline-block bg-amber-600 text-white px-4 py-2 text-sm font-medium mb-4">${c.hero.badge}</span>
+                        <h1 class="text-5xl md:text-7xl text-white font-bold mb-2">${c.hero.title}</h1>
+                        <p class="text-2xl text-white/80 mb-6">${c.hero.subtitle}</p>
+                        <div class="flex flex-wrap items-center gap-6 text-white">
+                            <span class="text-4xl font-bold">${c.hero.price}</span>
+                            <span class="text-white/50">|</span>
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined">bed</span> ${c.property.beds} Beds</span>
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined">bathroom</span> ${c.property.baths} Baths</span>
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined">square_foot</span> ${c.property.sqft} sqft</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Property Details -->
+            <section class="px-6 py-16 bg-white">
+                <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2">
+                        <h2 class="text-3xl font-bold text-stone-800 mb-6">Property Overview</h2>
+                        <div class="grid grid-cols-3 gap-4 mb-8">
+                            <div class="bg-stone-50 p-4 text-center rounded-lg">
+                                <div class="text-2xl font-bold text-stone-800">${c.property.type}</div>
+                                <div class="text-sm text-stone-500">Property Type</div>
+                            </div>
+                            <div class="bg-stone-50 p-4 text-center rounded-lg">
+                                <div class="text-2xl font-bold text-stone-800">${c.property.year}</div>
+                                <div class="text-sm text-stone-500">Year Built</div>
+                            </div>
+                            <div class="bg-stone-50 p-4 text-center rounded-lg">
+                                <div class="text-2xl font-bold text-stone-800">${c.property.tenure}</div>
+                                <div class="text-sm text-stone-500">Tenure</div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4">Features & Amenities</h3>
+                        <div class="grid grid-cols-2 gap-3 mb-8">
+                            ${c.features.map(f => `
+                                <div class="flex items-center gap-2 text-stone-600">
+                                    <span class="material-symbols-outlined text-amber-600">check_circle</span>
+                                    ${f}
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4">Gallery</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            ${c.gallery.map(img => `<img src="${img}" class="rounded-lg w-full h-48 object-cover hover:opacity-90 cursor-pointer"/>`).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div>
+                        <div class="bg-stone-50 p-6 rounded-xl sticky top-8">
+                            <h3 class="text-xl font-bold text-stone-800 mb-6">Schedule a Viewing</h3>
+                            <div class="flex items-center gap-4 mb-6">
+                                <img src="${c.agent.image}" class="w-16 h-16 rounded-full object-cover"/>
+                                <div>
+                                    <div class="font-semibold text-stone-800">${c.agent.name}</div>
+                                    <div class="text-sm text-stone-500">${c.agent.title}</div>
+                                </div>
+                            </div>
+                            <div class="space-y-3 mb-6">
+                                <a href="tel:${c.agent.phone}" class="flex items-center gap-2 text-stone-600 hover:text-amber-600">
+                                    <span class="material-symbols-outlined">phone</span>${c.agent.phone}
+                                </a>
+                                <a href="mailto:${c.agent.email}" class="flex items-center gap-2 text-stone-600 hover:text-amber-600">
+                                    <span class="material-symbols-outlined">email</span>${c.agent.email}
+                                </a>
+                            </div>
+                            <a href="tel:${c.agent.phone}" class="block w-full bg-amber-600 text-white text-center py-4 font-semibold hover:bg-amber-700 rounded-lg mb-3">Call Now</a>
+                            <a href="https://wa.me/${c.agent.phone.replace(/[^0-9]/g, '')}" class="block w-full bg-green-600 text-white text-center py-4 font-semibold hover:bg-green-700 rounded-lg">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Location -->
+            <section class="px-6 py-16 bg-stone-100">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-3xl font-bold text-stone-800 mb-8">Location</h2>
+                    <p class="text-lg text-stone-600 mb-6">${c.location.address}</p>
+                    <div class="flex flex-wrap gap-4">
+                        ${c.location.nearby.map(n => `<span class="bg-white px-4 py-2 rounded-full text-stone-600"><span class="material-symbols-outlined text-amber-600 text-sm align-middle mr-1">location_on</span>${n}</span>`).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <footer class="bg-stone-900 px-6 py-8">
+                <div class="text-center text-stone-400">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

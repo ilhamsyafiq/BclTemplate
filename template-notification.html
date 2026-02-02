@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Social Proof Notifications Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "ShopNow", icon: "shopping_bag", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    hero: {
+        badge: "🔥 Best Seller",
+        title: "Premium Wireless Earbuds",
+        description: "Crystal clear sound with 48-hour battery life. Join 10,000+ happy customers.",
+        price: "RM199",
+        originalPrice: "RM399"
+    },
+    gallery: ["https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600"],
+    features: [
+        { icon: "battery_full", title: "48hr Battery", desc: "All-day listening" },
+        { icon: "water_drop", title: "IPX7 Waterproof", desc: "Sweat & rain proof" },
+        { icon: "bluetooth", title: "Bluetooth 5.3", desc: "Instant pairing" }
+    ],
+    // PURCHASE NOTIFICATIONS - Edit these to show recent buyers
+    notifications: [
+        { name: "Ahmad dari Kuala Lumpur", time: "2 minit lepas", product: "Premium Earbuds" },
+        { name: "Siti dari Penang", time: "5 minit lepas", product: "Premium Earbuds" },
+        { name: "Razak dari Johor", time: "8 minit lepas", product: "Premium Earbuds x2" },
+        { name: "Aishah dari Selangor", time: "12 minit lepas", product: "Premium Earbuds" },
+        { name: "Hafiz dari Melaka", time: "15 minit lepas", product: "Premium Earbuds" },
+        { name: "Nurul dari Sabah", time: "18 minit lepas", product: "Premium Earbuds" }
+    ],
+    cta: { text: "Beli Sekarang", link: "#" },
+    stats: { sold: "2,847", rating: "4.9", reviews: "1,203" }
+};
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; }
+@keyframes slideIn { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+.notification-enter { animation: slideIn 0.5s ease-out; }
+.notification-exit { animation: slideOut 0.5s ease-in; }
+</style>
+<div id="app"></div>
+<div id="notification-container" class="fixed bottom-4 left-4 z-50"></div>
+
+<script>
+let notificationIndex = 0;
+function showNotification() {
+    const c = CONFIG;
+    const n = c.notifications[notificationIndex];
+    const container = document.getElementById('notification-container');
+
+    container.innerHTML = `
+        <div class="notification-enter bg-white rounded-lg shadow-2xl p-4 max-w-sm border border-gray-100">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-green-600">shopping_cart</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-semibold text-gray-900">${n.name}</p>
+                    <p class="text-sm text-gray-600">baru beli <span class="font-medium text-green-600">${n.product}</span></p>
+                    <p class="text-xs text-gray-400 mt-1">${n.time}</p>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" class="text-gray-400 hover:text-gray-600">
+                    <span class="material-symbols-outlined text-sm">close</span>
+                </button>
+            </div>
+        </div>
+    `;
+
+    notificationIndex = (notificationIndex + 1) % c.notifications.length;
+
+    setTimeout(() => {
+        const notif = container.querySelector('div');
+        if (notif) {
+            notif.classList.remove('notification-enter');
+            notif.classList.add('notification-exit');
+            setTimeout(() => notif.remove(), 500);
+        }
+    }, 4000);
+}
+
+// Show notification every 8 seconds
+setTimeout(showNotification, 2000);
+setInterval(showNotification, 8000);
+
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen bg-gray-50">
+            <nav class="bg-white shadow-sm px-6 py-4">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-indigo-600">${c.brand.icon}</span>
+                        <span class="font-bold text-xl">${c.brand.name}</span>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="px-6 py-12">
+                <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+                    <div class="sticky top-8">
+                        <img src="${c.gallery[0]}" class="w-full rounded-2xl shadow-lg"/>
+                        <div class="mt-4 flex items-center gap-4 justify-center">
+                            <div class="flex items-center gap-1 bg-yellow-50 px-3 py-1 rounded-full">
+                                <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+                                <span class="font-semibold text-sm">${c.stats.rating}</span>
+                                <span class="text-gray-500 text-sm">(${c.stats.reviews} reviews)</span>
+                            </div>
+                            <div class="text-sm text-gray-500"><span class="font-semibold text-green-600">${c.stats.sold}</span> terjual</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <span class="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">${c.hero.badge}</span>
+                        <h1 class="text-4xl font-bold text-gray-900">${c.hero.title}</h1>
+                        <p class="text-lg text-gray-600">${c.hero.description}</p>
+
+                        <div class="flex items-baseline gap-3">
+                            <span class="text-4xl font-bold text-indigo-600">${c.hero.price}</span>
+                            <span class="text-xl text-gray-400 line-through">${c.hero.originalPrice}</span>
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-sm font-semibold">50% OFF</span>
+                        </div>
+
+                        <!-- Live Stats -->
+                        <div class="bg-orange-50 border border-orange-200 rounded-xl p-4">
+                            <div class="flex items-center gap-2 text-orange-700">
+                                <span class="material-symbols-outlined animate-pulse">local_fire_department</span>
+                                <span class="font-semibold"><span id="viewer-count">23</span> orang sedang melihat produk ini</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4">
+                            ${c.features.map(f => `
+                                <div class="bg-white p-4 rounded-xl text-center border">
+                                    <span class="material-symbols-outlined text-indigo-600 text-2xl">${f.icon}</span>
+                                    <div class="font-semibold mt-2 text-sm">${f.title}</div>
+                                    <div class="text-xs text-gray-500">${f.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <a href="${c.cta.link}" class="block w-full bg-indigo-600 text-white text-center py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 shadow-lg shadow-indigo-600/30">
+                            ${c.cta.text} - ${c.hero.price}
+                        </a>
+
+                        <div class="flex items-center justify-center gap-6 text-sm text-gray-500">
+                            <div class="flex items-center gap-1"><span class="material-symbols-outlined text-green-500">verified</span> Original</div>
+                            <div class="flex items-center gap-1"><span class="material-symbols-outlined text-green-500">local_shipping</span> Free Shipping</div>
+                            <div class="flex items-center gap-1"><span class="material-symbols-outlined text-green-500">refresh</span> 30-Day Return</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="bg-white border-t px-6 py-8 mt-12">
+                <div class="text-center text-gray-500 text-sm">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+
+    // Simulate live viewer count
+    setInterval(() => {
+        const el = document.getElementById('viewer-count');
+        if (el) el.textContent = Math.floor(Math.random() * 15) + 18;
+    }, 5000);
+}
+render();
+</script>
+</body>
+</html>

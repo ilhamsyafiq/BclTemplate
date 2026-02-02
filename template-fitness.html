@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Fitness & Gym Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "POWERFIT", icon: "fitness_center", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    hero: {
+        badge: "NO PAIN NO GAIN",
+        title: "TRANSFORM YOUR BODY IN 90 DAYS",
+        description: "Join the most intense fitness program in Malaysia. Results guaranteed or money back.",
+        image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200",
+        video: null
+    },
+    stats: [
+        { number: "5000+", label: "Members" },
+        { number: "50+", label: "Trainers" },
+        { number: "98%", label: "Success Rate" }
+    ],
+    programs: [
+        { name: "Weight Loss", desc: "Burn fat, build lean muscle", icon: "local_fire_department", duration: "12 weeks" },
+        { name: "Muscle Building", desc: "Pack on serious mass", icon: "fitness_center", duration: "16 weeks" },
+        { name: "HIIT Training", desc: "Maximum results, minimum time", icon: "bolt", duration: "8 weeks" },
+        { name: "Personal Training", desc: "1-on-1 custom program", icon: "person", duration: "Flexible" }
+    ],
+    pricing: [
+        { name: "Basic", price: "RM99/mo", features: ["Gym access", "Basic equipment", "Locker room"], popular: false },
+        { name: "Pro", price: "RM199/mo", features: ["All Basic features", "Group classes", "Personal trainer 2x/mo"], popular: true },
+        { name: "Elite", price: "RM399/mo", features: ["All Pro features", "Unlimited PT", "Nutrition plan", "Priority booking"], popular: false }
+    ],
+    testimonials: [
+        { name: "Hafiz", before: "95kg", after: "75kg", text: "Lost 20kg in 4 months!", image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300" },
+        { name: "Aisha", before: "Size XL", after: "Size S", text: "Finally fit into my dream dress!", image: "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=300" }
+    ],
+    cta: { text: "DAFTAR SEKARANG", link: "#payment-form", phone: "+60123456789" }
+};
+</script>
+<style>
+body { font-family: 'Roboto', sans-serif; background: #0a0a0a; }
+h1, h2, h3 { font-family: 'Oswald', sans-serif; }
+</style>
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen text-white">
+            <!-- Hero -->
+            <section class="relative min-h-screen flex items-center" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('${c.hero.image}') center/cover fixed">
+                <div class="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent"></div>
+                <div class="relative px-6 py-20 max-w-6xl mx-auto">
+                    <span class="inline-block bg-red-600 px-4 py-2 text-sm font-bold tracking-widest mb-6">${c.hero.badge}</span>
+                    <h1 class="text-5xl md:text-8xl font-bold leading-none mb-6">${c.hero.title}</h1>
+                    <p class="text-xl text-gray-300 max-w-xl mb-10">${c.hero.description}</p>
+                    <a href="${c.cta.link}" class="inline-block bg-red-600 px-10 py-5 font-bold text-lg hover:bg-red-700 transition-colors">${c.cta.text}</a>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <section class="bg-red-600 py-12 px-6">
+                <div class="max-w-6xl mx-auto grid grid-cols-3 gap-8 text-center">
+                    ${c.stats.map(s => `
+                        <div>
+                            <div class="text-5xl md:text-6xl font-bold">${s.number}</div>
+                            <div class="text-lg opacity-80">${s.label}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </section>
+
+            <!-- Programs -->
+            <section class="px-6 py-20">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">OUR PROGRAMS</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${c.programs.map(p => `
+                            <div class="bg-zinc-900 p-8 border border-zinc-800 hover:border-red-600 transition-colors group">
+                                <span class="material-symbols-outlined text-red-600 text-4xl mb-4">${p.icon}</span>
+                                <h3 class="text-2xl font-bold mb-2">${p.name}</h3>
+                                <p class="text-gray-400 mb-4">${p.desc}</p>
+                                <div class="text-sm text-red-600 font-semibold">${p.duration}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transformations -->
+            <section class="px-6 py-20 bg-zinc-900">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">REAL TRANSFORMATIONS</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-black p-6 rounded-lg">
+                                <img src="${t.image}" class="w-full h-64 object-cover rounded-lg mb-6"/>
+                                <div class="flex justify-between items-center mb-4">
+                                    <div><span class="text-gray-400">Before:</span> <span class="font-bold text-xl">${t.before}</span></div>
+                                    <span class="material-symbols-outlined text-red-600">arrow_forward</span>
+                                    <div><span class="text-gray-400">After:</span> <span class="font-bold text-xl text-red-600">${t.after}</span></div>
+                                </div>
+                                <p class="text-gray-300">"${t.text}"</p>
+                                <div class="font-bold mt-2">- ${t.name}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-20 bg-black">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-white mb-8">DAFTAR SEKARANG</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <footer class="bg-black px-6 py-8">
+                <div class="text-center text-gray-500">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Life Coach Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "Sarah Ibrahim", title: "Certified Life & Business Coach" },
+    hero: {
+        headline: "Unlock Your Full Potential",
+        subheadline: "Transform your mindset, achieve your goals, and create the life you deserve",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600"
+    },
+    about: {
+        bio: "With over 15 years of experience helping entrepreneurs and professionals break through their limitations, I've guided hundreds of clients to achieve remarkable transformations in their careers and personal lives.",
+        credentials: ["ICF Certified Coach", "MBA, Harvard Business School", "TEDx Speaker", "Author of 'The Success Mindset'"]
+    },
+    services: [
+        { name: "1-on-1 Coaching", desc: "Personalized sessions tailored to your goals", price: "RM500/session", icon: "person" },
+        { name: "Group Coaching", desc: "Learn and grow with like-minded individuals", price: "RM200/session", icon: "groups" },
+        { name: "Corporate Training", desc: "Transform your team's performance", price: "Custom", icon: "business" }
+    ],
+    testimonials: [
+        { name: "Azman Ismail", role: "CEO, TechStart", text: "Sarah helped me overcome my limiting beliefs and grow my company 3x in one year.", image: "https://i.pravatar.cc/100?img=3" },
+        { name: "Nadia Hassan", role: "Entrepreneur", text: "The clarity I gained from coaching with Sarah changed everything. I finally know my purpose.", image: "https://i.pravatar.cc/100?img=5" }
+    ],
+    freebie: {
+        title: "Free Guide: 5 Steps to Transform Your Life",
+        description: "Download my proven framework for creating lasting change"
+    },
+    contact: { email: "hello@sarahcoach.com", phone: "+60 12-345 6789", whatsapp: "60123456789" }
+};
+</script>
+<style>
+body { font-family: 'Open Sans', sans-serif; background: #fdfbf7; }
+h1, h2, h3 { font-family: 'Libre Baskerville', serif; }
+</style>
+<div id="app"></div>
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen">
+            <nav class="px-6 py-6">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div>
+                        <div class="text-xl font-bold text-stone-800">${c.brand.name}</div>
+                        <div class="text-sm text-stone-500">${c.brand.title}</div>
+                    </div>
+                    <a href="#contact" class="bg-amber-600 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-700">Book a Call</a>
+                </div>
+            </nav>
+
+            <section class="px-6 py-16">
+                <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h1 class="text-4xl lg:text-6xl text-stone-800 leading-tight mb-6">${c.hero.headline}</h1>
+                        <p class="text-xl text-stone-600 mb-8">${c.hero.subheadline}</p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#contact" class="bg-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-amber-700">Start Your Journey</a>
+                            <a href="#services" class="border-2 border-stone-300 text-stone-700 px-8 py-4 rounded-full font-semibold hover:border-stone-400">View Services</a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-amber-200 rounded-full -z-10"></div>
+                        <img src="${c.hero.image}" class="rounded-full w-full max-w-md mx-auto"/>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-16 bg-stone-100">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl text-stone-800 mb-6">About Me</h2>
+                    <p class="text-lg text-stone-600 mb-8 leading-relaxed">${c.about.bio}</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        ${c.about.credentials.map(cr => `<span class="bg-white px-4 py-2 rounded-full text-stone-700 text-sm">${cr}</span>`).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <section id="services" class="px-6 py-16">
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="text-3xl text-stone-800 text-center mb-12">How I Can Help</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        ${c.services.map(s => `
+                            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow text-center">
+                                <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <span class="material-symbols-outlined text-amber-600 text-2xl">${s.icon}</span>
+                                </div>
+                                <h3 class="text-xl text-stone-800 mb-3">${s.name}</h3>
+                                <p class="text-stone-600 mb-4">${s.desc}</p>
+                                <div class="text-amber-600 font-semibold">${s.price}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-16 bg-amber-50">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl text-stone-800 text-center mb-12">Client Transformations</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-white p-8 rounded-2xl">
+                                <p class="text-stone-600 text-lg italic mb-6">"${t.text}"</p>
+                                <div class="flex items-center gap-4">
+                                    <img src="${t.image}" class="w-14 h-14 rounded-full"/>
+                                    <div>
+                                        <div class="font-semibold text-stone-800">${t.name}</div>
+                                        <div class="text-sm text-stone-500">${t.role}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-6 py-16 bg-stone-800 text-white">
+                <div class="max-w-xl mx-auto text-center">
+                    <span class="material-symbols-outlined text-5xl text-amber-400 mb-6">auto_stories</span>
+                    <h2 class="text-3xl mb-4">${c.freebie.title}</h2>
+                    <p class="text-stone-300 mb-8">${c.freebie.description}</p>
+                    <form class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/20 focus:outline-none focus:border-amber-400"/>
+                        <button class="bg-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-amber-700">Get Free Guide</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="contact" class="px-6 py-16">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-3xl text-stone-800 mb-6">Let's Connect</h2>
+                    <p class="text-stone-600 mb-8">Ready to transform your life? Book a free discovery call today.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="https://wa.me/${c.contact.whatsapp}" class="bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:${c.contact.email}" class="bg-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-amber-700 flex items-center gap-2">
+                            <span class="material-symbols-outlined">email</span>
+                            Email Me
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="bg-stone-100 px-6 py-8 text-center text-stone-500">
+                © 2026 Ilham Syafiq. All Rights Reserved.
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

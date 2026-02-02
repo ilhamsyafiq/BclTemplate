@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BCL.my - Playful Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+// ╔══════════════════════════════════════════════════════════════════════════════╗
+// ║                        EDIT YOUR CONTENT HERE                                 ║
+// ╚══════════════════════════════════════════════════════════════════════════════╝
+const CONFIG = {
+    brand: { name: "BCL.my", icon: "payments", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    colors: { primary: "#f59e0b", secondary: "#8b5cf6", accent: "#10b981" },
+    hero: {
+        badge: "🎉 Now with E-Invoice!",
+        title: "Payments made super easy!",
+        description: "Create QR codes, payment links & landing pages in just a few clicks. No coding needed!"
+    },
+    gallery: [
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-new/bcl-dashboard.png",
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-v2/qr-phone.png"
+    ],
+    features: {
+        title: "Why you'll love it",
+        subtitle: "Tools that just work",
+        items: [
+            { icon: "qr_code_2", title: "QR Magic", desc: "Turn phones into payment terminals", color: "amber" },
+            { icon: "web", title: "Page Builder", desc: "Beautiful landing pages, zero code", color: "violet" },
+            { icon: "receipt_long", title: "E-Invoice", desc: "LHDN compliant, stress-free", color: "emerald" },
+            { icon: "rocket_launch", title: "Fast Setup", desc: "Live in under a minute", color: "rose" }
+        ]
+    },
+    testimonials: [
+        { name: "Adly", role: "Entrepreneur", text: "So easy to use! 🚀" },
+        { name: "Nurnabilah", role: "Business Owner", text: "Sales went up 40%! 📈" },
+        { name: "Maisarah", role: "Freelancer", text: "Clients love it! 💜" },
+        { name: "Leena", role: "Agency", text: "Perfect for our team! ⭐" }
+    ],
+    packages: {
+        title: "Pick your plan",
+        items: [
+            { name: "Free Forever", price: "RM0", badge: null, features: ["Unlimited forms", "FPX payments", "Basic support"], buttonText: "Start Free!", buttonLink: "#" },
+            { name: "Super Pro", price: "RM1,888/yr", badge: "🔥 Best Value", features: ["Everything!", "Free domains", "VIP support"], buttonText: "Go Pro!", buttonLink: "#" }
+        ]
+    }
+};
+</script>
+
+<style>
+body { font-family: 'Nunito', sans-serif; background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 50%, #ede9fe 100%); }
+.blob { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+</style>
+
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    const colors = { amber: 'bg-amber-500', violet: 'bg-violet-500', emerald: 'bg-emerald-500', rose: 'bg-rose-500' };
+
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen">
+            <!-- Floating shapes -->
+            <div class="fixed inset-0 -z-10 overflow-hidden">
+                <div class="absolute top-20 left-10 w-32 h-32 bg-amber-300/50 blob animate-pulse"></div>
+                <div class="absolute top-40 right-20 w-24 h-24 bg-violet-300/50 blob animate-pulse delay-100"></div>
+                <div class="absolute bottom-40 left-1/4 w-40 h-40 bg-emerald-300/50 blob animate-pulse delay-200"></div>
+            </div>
+
+            <!-- Nav -->
+            <nav class="px-6 py-6">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
+                            <span class="material-symbols-outlined text-white">${c.brand.icon}</span>
+                        </div>
+                        <span class="font-black text-2xl text-gray-800">${c.brand.name}</span>
+                    </div>
+                    <a href="#payment-form" class="bg-gradient-to-r from-amber-400 to-orange-500 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">Daftar Sekarang</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="px-6 py-20">
+                <div class="max-w-5xl mx-auto text-center">
+                    <span class="inline-block bg-white/80 backdrop-blur px-6 py-3 rounded-full text-lg font-bold shadow-lg mb-8">${c.hero.badge}</span>
+                    <h1 class="text-5xl md:text-7xl font-black text-gray-800 leading-tight mb-6">${c.hero.title}</h1>
+                    <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">${c.hero.description}</p>
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <a href="#payment-form" class="bg-gradient-to-r from-amber-400 to-orange-500 text-white px-10 py-5 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">Daftar Sekarang</a>
+                    </div>
+                </div>
+                <div class="max-w-4xl mx-auto mt-16">
+                    <div class="bg-white p-4 rounded-3xl shadow-2xl transform -rotate-1 hover:rotate-0 transition-transform">
+                        <img src="${c.gallery[0]}" alt="Dashboard" class="rounded-2xl w-full"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="px-6 py-24">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-black text-gray-800">${c.features.title}</h2>
+                        <p class="text-gray-600 text-lg mt-4">${c.features.subtitle}</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${c.features.items.map(f => `
+                            <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl hover:scale-105 transition-all text-center">
+                                <div class="w-20 h-20 ${colors[f.color]} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                    <span class="material-symbols-outlined text-white text-3xl">${f.icon}</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">${f.title}</h3>
+                                <p class="text-gray-600">${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="px-6 py-24">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-4xl font-black text-gray-800 text-center mb-16">Happy users say...</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${c.testimonials.map((t, i) => `
+                            <div class="bg-white p-6 rounded-3xl shadow-lg transform ${i % 2 === 0 ? 'rotate-1' : '-rotate-1'} hover:rotate-0 transition-transform">
+                                <p class="text-2xl font-bold text-gray-800 mb-4">"${t.text}"</p>
+                                <div class="font-bold text-gray-800">${t.name}</div>
+                                <div class="text-sm text-gray-500">${t.role}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-20">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-8">Daftar Sekarang</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="px-6 py-8">
+                <div class="text-center text-gray-600">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

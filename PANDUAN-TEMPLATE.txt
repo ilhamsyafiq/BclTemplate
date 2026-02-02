@@ -1,0 +1,1084 @@
+================================================================================
+                    PANDUAN LENGKAP TEMPLATE LANDING PAGE
+                         Oleh: Ilham Syafiq (2026)
+================================================================================
+
+Dokumen ini mengandungi panduan untuk mengemaskini semua template HTML.
+Setiap template mempunyai bahagian CONFIG yang boleh diedit di bahagian atas fail.
+
+================================================================================
+                              SENARAI TEMPLATE
+================================================================================
+
+STYLE TEMPLATES:
+1.  template-minimal.html      - Clean & simple
+2.  template-gradient.html     - Vibrant gradient backgrounds
+3.  template-cards.html        - Card-focused layout
+4.  template-split.html        - Split-screen hero
+5.  template-dark.html         - Cyber/tech dark theme
+6.  template-playful.html      - Fun & colorful
+7.  template-corporate.html    - Professional enterprise
+8.  template-bold.html         - Bold typography
+9.  template-glass.html        - Glassmorphism effects
+10. template-warm.html         - Warm & friendly
+
+FEATURE TEMPLATES:
+11. template-notification.html - Social proof popups
+12. template-countdown.html    - Flash sale countdown
+13. template-modal.html        - Welcome modal popup
+
+NICHE TEMPLATES:
+14. template-restaurant.html   - Food & restaurant
+15. template-webinar.html      - Event registration
+16. template-fitness.html      - Gym & fitness
+17. template-realestate.html   - Property listing
+18. template-course.html       - Online course
+19. template-beauty.html       - Spa & beauty
+20. template-charity.html      - Donation page
+21. template-podcast.html      - Podcast show
+22. template-saas.html         - Software product
+23. template-fashion.html      - Fashion store
+24. template-travel.html       - Travel agency
+25. template-coaching.html     - Life coach
+26. template-wedding.html      - Wedding invitation
+
+MAIN TEMPLATES:
+27. Template1.html             - BCL.my style with gallery
+28. index.html                 - Template gallery/showcase
+
+
+================================================================================
+                         1. TEMPLATE-MINIMAL.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 3 gambar
+- gallery[0]: Gambar utama hero (800x600px disyorkan)
+- gallery[1]: Gambar kedua
+- gallery[2]: Gambar ketiga
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: {
+        name: "Nama Bisnes",           // Nama syarikat/brand
+        icon: "payments",               // Material icon (cth: storefront, shop, etc)
+        copyright: "© 2026 Nama Anda"   // Hak cipta
+    },
+    hero: {
+        badge: "Teks Badge",            // Label kecil di atas tajuk
+        title: "Tajuk Utama",           // Tajuk besar
+        description: "Penerangan..."    // Penerangan ringkas
+    },
+    gallery: [
+        "URL_GAMBAR_1",
+        "URL_GAMBAR_2",
+        "URL_GAMBAR_3"
+    ],
+    features: {
+        title: "Tajuk Features",
+        subtitle: "Subtajuk",
+        items: [
+            { icon: "icon_name", title: "Feature 1", desc: "Penerangan" },
+            { icon: "icon_name", title: "Feature 2", desc: "Penerangan" },
+            { icon: "icon_name", title: "Feature 3", desc: "Penerangan" }
+        ]
+    },
+    testimonials: [
+        { name: "Nama", role: "Jawatan", text: "Testimoni..." },
+        { name: "Nama", role: "Jawatan", text: "Testimoni..." },
+        { name: "Nama", role: "Jawatan", text: "Testimoni..." }
+    ]
+};
+```
+
+
+================================================================================
+                         2. TEMPLATE-GRADIENT.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 2 gambar
+- gallery[0]: Gambar dashboard/produk utama
+- gallery[1]: Gambar kedua (pilihan)
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: {
+        name: "Nama Brand",
+        icon: "payments",
+        copyright: "© 2026 Nama Anda"
+    },
+    colors: {
+        primary: "#8b5cf6",      // Warna utama (violet)
+        secondary: "#ec4899",    // Warna sekunder (pink)
+        bg: "#0f0f23"            // Warna latar
+    },
+    hero: {
+        badge: "🚀 Badge Text",
+        title: "Tajuk dengan <span class='...'>highlight</span>",
+        description: "Penerangan produk/servis"
+    },
+    gallery: ["URL_GAMBAR_1", "URL_GAMBAR_2"],
+    features: {
+        title: "Powerful Features",
+        subtitle: "Subtajuk",
+        items: [
+            { icon: "qr_code_2", title: "Feature", desc: "Penerangan" },
+            // Tambah sehingga 6 features
+        ]
+    },
+    testimonials: [
+        { name: "Nama", role: "Jawatan", text: "Testimoni" },
+        // 3 testimoni
+    ]
+};
+```
+
+
+================================================================================
+                         3. TEMPLATE-CARDS.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 1 gambar
+- gallery[0]: Gambar utama hero/dashboard
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Brand", icon: "payments", copyright: "..." },
+    hero: {
+        badge: "Trusted by 10,000+ businesses",
+        title: "Tajuk Menarik",
+        description: "Penerangan"
+    },
+    gallery: ["URL_GAMBAR"],
+    features: {
+        title: "Built for Malaysian SMEs",
+        subtitle: "Every tool you need",
+        items: [
+            { icon: "qr_code_2", title: "Feature", desc: "..." },
+            // 4 features
+        ]
+    },
+    testimonials: [
+        { name: "Nama", role: "Jawatan", text: "..." },
+        // 4 testimoni
+    ]
+};
+```
+
+
+================================================================================
+                         4. TEMPLATE-SPLIT.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 3 gambar
+- gallery[0], gallery[1], gallery[2]
+
+CONFIG SAMA SEPERTI TEMPLATE LAIN
+
+
+================================================================================
+                         5. TEMPLATE-DARK.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 1 gambar
+- gallery[0]: Gambar dashboard/produk
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Brand", icon: "payments", copyright: "..." },
+    colors: {
+        primary: "#22d3ee",    // Cyan
+        bg: "#09090b"          // Hitam
+    },
+    hero: {
+        badge: "⚡ Badge",
+        title: "Tajuk",
+        description: "Penerangan"
+    },
+    gallery: ["URL_GAMBAR"],
+    features: {
+        title: "Features",
+        subtitle: "Subtajuk",
+        items: [
+            { icon: "bolt", title: "Feature", desc: "..." },
+            // 4 features
+        ]
+    },
+    testimonials: [/* 3 testimoni */]
+};
+```
+
+
+================================================================================
+                         6. TEMPLATE-PLAYFUL.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 2 gambar
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Brand", icon: "payments", copyright: "..." },
+    colors: {
+        primary: "#f59e0b",     // Amber
+        secondary: "#8b5cf6",   // Violet
+        accent: "#10b981"       // Emerald
+    },
+    hero: {
+        badge: "🎉 Badge!",
+        title: "Tajuk Menarik!",
+        description: "Penerangan"
+    },
+    gallery: ["URL_1", "URL_2"],
+    features: {
+        title: "Why you'll love it",
+        subtitle: "Tools that just work",
+        items: [
+            { icon: "qr_code_2", title: "Feature", desc: "...", color: "amber" },
+            // 4 features dengan warna berbeza
+        ]
+    },
+    testimonials: [/* 4 testimoni dengan emoji */]
+};
+```
+
+
+================================================================================
+                         7. TEMPLATE-CORPORATE.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 1 gambar
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Brand", icon: "payments", copyright: "..." },
+    colors: { primary: "#1e40af", bg: "#ffffff" },
+    hero: {
+        badge: "Enterprise Payment Solutions",
+        title: "Streamline Your Business",
+        description: "Penerangan profesional"
+    },
+    gallery: ["URL_GAMBAR"],
+    features: {
+        title: "Enterprise-Grade Solutions",
+        subtitle: "Trusted by leading businesses",
+        items: [/* 6 features */]
+    },
+    testimonials: [/* 2 testimoni */]
+};
+```
+
+
+================================================================================
+                         8. TEMPLATE-BOLD.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 2 gambar
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "BRAND", icon: "payments", copyright: "..." },
+    colors: { primary: "#dc2626", bg: "#000000" },
+    hero: {
+        badge: "PAYMENT REVOLUTION",
+        title: "TAJUK BOLD",          // Semua huruf besar
+        description: "Penerangan"
+    },
+    gallery: ["URL_1", "URL_2"],
+    features: {
+        title: "POWER FEATURES",
+        items: [/* 4 features - huruf besar */]
+    },
+    testimonials: [/* 3 testimoni ringkas */]
+};
+```
+
+
+================================================================================
+                         9. TEMPLATE-GLASS.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 1 gambar
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Brand", icon: "payments", copyright: "..." },
+    colors: { primary: "#0ea5e9", secondary: "#a855f7" },
+    hero: {
+        badge: "All-in-One Platform",
+        title: "Tajuk Menarik",
+        description: "Penerangan"
+    },
+    gallery: ["URL_GAMBAR"],
+    features: {
+        title: "Why Us?",
+        subtitle: "Everything in one place",
+        items: [/* 4 features */]
+    },
+    testimonials: [/* 3 testimoni */]
+};
+```
+
+
+================================================================================
+                         10. TEMPLATE-WARM.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 2 gambar
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Brand", icon: "payments", copyright: "..." },
+    colors: { primary: "#b45309", bg: "#fffbeb" },
+    hero: {
+        badge: "Trusted Partner",
+        title: "Tajuk Mesra",
+        description: "Penerangan hangat"
+    },
+    gallery: ["URL_1", "URL_2"],
+    features: {
+        title: "Built with care",
+        subtitle: "Features that matter",
+        items: [/* 3 features */]
+    },
+    testimonials: [/* 3 testimoni */]
+};
+```
+
+
+================================================================================
+                         11. TEMPLATE-NOTIFICATION.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 1 gambar produk
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "ShopNow", icon: "shopping_bag", copyright: "..." },
+    hero: {
+        badge: "🔥 Best Seller",
+        title: "Nama Produk",
+        description: "Penerangan produk",
+        price: "RM199",
+        originalPrice: "RM399"
+    },
+    gallery: ["URL_GAMBAR_PRODUK"],
+    features: [
+        { icon: "battery_full", title: "Feature", desc: "..." },
+        // 3 features
+    ],
+    // NOTIFIKASI PEMBELIAN (popup)
+    notifications: [
+        { name: "Ahmad dari KL", time: "2 minit lepas", product: "Nama Produk" },
+        { name: "Siti dari JB", time: "5 minit lepas", product: "Nama Produk" },
+        // Tambah lebih notifikasi
+    ]
+};
+```
+
+
+================================================================================
+                         12. TEMPLATE-COUNTDOWN.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 4 gambar produk
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "MegaSale", icon: "bolt", copyright: "..." },
+    countdown: {
+        endDate: new Date(2026, 11, 31, 23, 59, 59), // Tarikh tamat
+        title: "Flash Sale Tamat Dalam",
+        expiredMessage: "Sale Telah Tamat!"
+    },
+    hero: {
+        badge: "⚡ FLASH SALE",
+        title: "Diskaun <span class='text-yellow-400'>70%</span>",
+        description: "Penerangan sale"
+    },
+    products: [
+        {
+            name: "Produk 1",
+            price: "RM149",
+            original: "RM499",
+            image: "URL_GAMBAR",
+            discount: "70%"
+        },
+        // 4 produk
+    ]
+};
+```
+
+
+================================================================================
+                         13. TEMPLATE-MODAL.HTML (BARU!)
+================================================================================
+
+GAMBAR DIPERLUKAN: 3 gambar
+- modal.image: Gambar dalam popup modal
+- gallery[0]: Gambar hero
+- gallery[1]: Gambar kedua (pilihan)
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Brand", icon: "storefront", copyright: "..." },
+
+    // TETAPAN MODAL POPUP
+    modal: {
+        title: "Selamat Datang!",
+        subtitle: "Tawaran Eksklusif",
+        description: "Penerangan tawaran...",
+        image: "URL_GAMBAR_MODAL",
+        buttonText: "Tebus Sekarang",
+        closeText: "Tidak, terima kasih"
+    },
+
+    hero: {
+        badge: "Badge",
+        title: "Tajuk",
+        description: "Penerangan"
+    },
+    gallery: ["URL_1", "URL_2"],
+    features: {/* 3 features */},
+    testimonials: [/* 3 testimoni */]
+};
+```
+
+
+================================================================================
+                         14. TEMPLATE-RESTAURANT.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 5+ gambar
+- hero.image: Gambar restoran
+- menu.items[].image: Gambar setiap menu (4+ gambar)
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Nama Restoran", icon: "restaurant", copyright: "..." },
+    hero: {
+        badge: "Authentic Cuisine",
+        title: "Tajuk Restoran",
+        description: "Penerangan",
+        image: "URL_GAMBAR_RESTORAN"
+    },
+    menu: {
+        title: "Menu Pilihan",
+        categories: ["Semua", "Nasi", "Mee", "Lauk", "Minuman"],
+        items: [
+            {
+                name: "Nasi Lemak",
+                price: "RM12",
+                desc: "Penerangan",
+                category: "Nasi",
+                image: "URL",
+                popular: true
+            },
+            // Tambah menu lain
+        ]
+    },
+    info: {
+        address: "Alamat restoran",
+        phone: "No telefon",
+        hours: "Waktu operasi"
+    }
+};
+```
+
+
+================================================================================
+                         15. TEMPLATE-WEBINAR.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 1 gambar host
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "WebinarPro", icon: "videocam" },
+    webinar: {
+        badge: "🎓 WEBINAR PERCUMA",
+        title: "Tajuk Webinar",
+        description: "Penerangan webinar",
+        date: "25 Februari 2026",
+        time: "8:30 PM",
+        duration: "2 jam",
+        platform: "Zoom",
+        seats: 500,
+        seatsLeft: 47
+    },
+    host: {
+        name: "Nama Host",
+        title: "Jawatan",
+        image: "URL_GAMBAR_HOST",
+        credentials: [
+            "15+ tahun pengalaman",
+            "500+ students berjaya"
+        ]
+    },
+    benefits: [
+        "Manfaat 1",
+        "Manfaat 2",
+        "Manfaat 3"
+    ],
+    testimonials: [
+        { name: "Nama", result: "Hasil yang dicapai" }
+    ],
+    cta: { text: "DAFTAR SEKARANG", link: "#payment-form" }
+};
+```
+
+
+================================================================================
+                         16. TEMPLATE-FITNESS.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 5+ gambar
+- hero.image: Gambar gym
+- transformations[].before/after: Gambar sebelum/selepas
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "POWERFIT", icon: "fitness_center", copyright: "..." },
+    hero: {
+        badge: "NO PAIN NO GAIN",
+        title: "TRANSFORM YOUR BODY",
+        description: "Penerangan program",
+        image: "URL_GAMBAR_GYM"
+    },
+    stats: [
+        { number: "5000+", label: "Members" },
+        { number: "50+", label: "Trainers" },
+        { number: "98%", label: "Success Rate" }
+    ],
+    programs: [
+        { name: "Weight Loss", desc: "...", icon: "local_fire_department", duration: "12 weeks" },
+        // Tambah program lain
+    ],
+    transformations: [
+        { name: "Ahmad", before: "URL", after: "URL", result: "Turun 20kg" }
+    ],
+    cta: { text: "DAFTAR SEKARANG", link: "#payment-form" }
+};
+```
+
+
+================================================================================
+                         17. TEMPLATE-REALESTATE.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 5+ gambar
+- hero.image: Gambar utama hartanah
+- gallery[]: Gambar-gambar hartanah
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Luxury Homes", icon: "villa", copyright: "..." },
+    hero: {
+        badge: "Exclusive Listing",
+        title: "Nama Hartanah",
+        subtitle: "Tagline",
+        price: "RM 4,500,000",
+        image: "URL_GAMBAR"
+    },
+    property: {
+        beds: 5,
+        baths: 6,
+        sqft: "6,500",
+        type: "Bungalow",
+        year: 2023,
+        tenure: "Freehold"
+    },
+    features: [
+        "Swimming pool",
+        "Garden",
+        // Tambah features
+    ],
+    gallery: ["URL_1", "URL_2", "URL_3", "URL_4"],
+    agent: {
+        name: "Nama Ejen",
+        phone: "No telefon",
+        email: "Email",
+        image: "URL_GAMBAR_EJEN"
+    }
+};
+```
+
+
+================================================================================
+                         18. TEMPLATE-COURSE.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 1 gambar instructor
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "SkillMaster", icon: "school" },
+    course: {
+        badge: "BESTSELLER",
+        title: "Nama Kursus 2026",
+        subtitle: "Tagline kursus",
+        description: "Penerangan penuh kursus",
+        price: "RM497",
+        originalPrice: "RM1,997",
+        discount: "75% OFF",
+        rating: 4.9,
+        reviews: 2847,
+        students: 15420,
+        lastUpdated: "Februari 2026",
+        language: "Bahasa Malaysia",
+        certificate: true
+    },
+    instructor: {
+        name: "Nama Instructor",
+        title: "Jawatan",
+        image: "URL_GAMBAR",
+        bio: "Bio instructor",
+        students: "50,000+",
+        courses: 12,
+        rating: 4.8
+    },
+    curriculum: [
+        { module: "Module 1", title: "Tajuk", lessons: 8, duration: "2 jam" },
+        // Tambah modules
+    ],
+    includes: [
+        { icon: "play_circle", text: "15 jam video" },
+        { icon: "download", text: "50+ templates" },
+        // Tambah includes
+    ],
+    testimonials: [
+        { name: "Nama", role: "Jawatan", text: "...", rating: 5 }
+    ],
+    cta: { text: "Daftar Sekarang", link: "#payment-form" }
+};
+```
+
+
+================================================================================
+                         19. TEMPLATE-BEAUTY.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 5+ gambar
+- hero.image: Gambar salon
+- services[].image: Gambar setiap servis
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Nama Salon", icon: "spa", copyright: "..." },
+    hero: {
+        badge: "Award Winning Salon",
+        title: "Tagline Salon",
+        description: "Penerangan",
+        image: "URL_GAMBAR"
+    },
+    services: [
+        { name: "Facial", price: "From RM150", duration: "60 min", image: "URL" },
+        // Tambah services
+    ],
+    testimonials: [
+        { name: "Nama", text: "Testimoni", rating: 5 }
+    ],
+    info: {
+        address: "Alamat",
+        phone: "No telefon",
+        hours: "Waktu operasi",
+        whatsapp: "60123456789"
+    }
+};
+```
+
+
+================================================================================
+                         20. TEMPLATE-CHARITY.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 1 gambar kempen
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Nama Badan", icon: "volunteer_activism", copyright: "..." },
+    campaign: {
+        title: "Tajuk Kempen 2026",
+        description: "Penerangan kempen",
+        goal: 500000,           // Target (RM)
+        raised: 347850,         // Sudah dikumpul
+        donors: 2847,           // Bilangan penderma
+        daysLeft: 15,           // Hari berbaki
+        image: "URL_GAMBAR"
+    },
+    donationAmounts: [50, 100, 200, 500, 1000],
+    impact: [
+        { amount: "RM50", impact: "Kesan sumbangan RM50" },
+        { amount: "RM100", impact: "Kesan sumbangan RM100" },
+        // Tambah lagi
+    ]
+};
+```
+
+
+================================================================================
+                         21. TEMPLATE-PODCAST.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 4+ gambar
+- hero.image: Gambar podcast
+- latestEpisodes[].image: Gambar setiap episod/tetamu
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Nama Podcast", tagline: "Tagline" },
+    hero: {
+        title: "Tajuk Podcast",
+        description: "Penerangan podcast",
+        image: "URL_GAMBAR"
+    },
+    stats: { episodes: "150+", downloads: "2M+", rating: "4.9" },
+    platforms: [
+        { name: "Spotify", url: "#", icon: "URL_ICON" },
+        { name: "Apple Podcasts", url: "#", icon: "URL_ICON" },
+        { name: "YouTube", url: "#", icon: "URL_ICON" }
+    ],
+    latestEpisodes: [
+        {
+            number: "#150",
+            title: "Tajuk Episod",
+            guest: "Nama Tetamu",
+            duration: "58 min",
+            image: "URL"
+        },
+        // Tambah episod
+    ]
+};
+```
+
+
+================================================================================
+                         22. TEMPLATE-SAAS.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 0 gambar (guna ilustrasi)
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Nama App", icon: "dashboard", copyright: "..." },
+    hero: {
+        badge: "✨ New Features",
+        title: "Tajuk Produk",
+        description: "Penerangan produk",
+        cta: { primary: "Daftar Sekarang" }
+    },
+    trustedBy: ["Company1", "Company2", "Company3"],
+    features: [
+        { icon: "task_alt", title: "Feature", desc: "Penerangan" },
+        // 6 features
+    ],
+    testimonials: [
+        { name: "Nama", role: "Jawatan", company: "Syarikat", text: "..." }
+    ]
+};
+```
+
+
+================================================================================
+                         23. TEMPLATE-FASHION.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 8+ gambar
+- hero.image: Gambar hero
+- featured[].image: Gambar produk (4+)
+- instagram[]: Gambar Instagram (4+)
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "NAMA BRAND", tagline: "Tagline" },
+    hero: {
+        title: "Collection 2026",
+        subtitle: "Tagline",
+        cta: "Shop Now",
+        image: "URL_GAMBAR"
+    },
+    featured: [
+        { name: "Nama Produk", price: "RM890", image: "URL" },
+        // 4 produk
+    ],
+    categories: ["New Arrivals", "Dresses", "Outerwear"],
+    instagram: ["URL_1", "URL_2", "URL_3", "URL_4"],
+    info: { whatsapp: "60123456789" }
+};
+```
+
+
+================================================================================
+                         24. TEMPLATE-TRAVEL.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 4+ gambar
+- hero.image: Gambar travel
+- packages[].image: Gambar setiap pakej
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Nama Agensi", icon: "flight_takeoff" },
+    hero: {
+        title: "Discover Your Adventure",
+        subtitle: "Tagline",
+        image: "URL_GAMBAR"
+    },
+    packages: [
+        {
+            name: "Langkawi Paradise",
+            days: "4D3N",
+            price: "RM899",
+            image: "URL",
+            rating: 4.9
+        },
+        // Tambah pakej
+    ],
+    features: [
+        { icon: "verified", text: "Licensed & Insured" },
+        { icon: "support_agent", text: "24/7 Support" }
+    ],
+    info: { whatsapp: "60123456789", phone: "03-12345678" }
+};
+```
+
+
+================================================================================
+                         25. TEMPLATE-COACHING.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 4+ gambar
+- hero.image: Gambar coach
+- testimonials[].image: Gambar pelanggan
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: { name: "Nama Coach", title: "Certified Life Coach" },
+    hero: {
+        headline: "Unlock Your Potential",
+        subheadline: "Tagline",
+        image: "URL_GAMBAR_COACH"
+    },
+    about: {
+        bio: "Bio coach...",
+        credentials: ["ICF Certified", "MBA", "TEDx Speaker"]
+    },
+    services: [
+        { name: "1-on-1 Coaching", desc: "...", price: "RM500/session", icon: "person" },
+        // Tambah services
+    ],
+    testimonials: [
+        { name: "Nama", role: "Jawatan", text: "...", image: "URL" }
+    ],
+    info: { whatsapp: "60123456789" }
+};
+```
+
+
+================================================================================
+                         26. TEMPLATE-WEDDING.HTML
+================================================================================
+
+GAMBAR DIPERLUKAN: 4+ gambar
+- gallery[]: Gambar pasangan
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    couple: {
+        bride: "Nama Pengantin Perempuan",
+        groom: "Nama Pengantin Lelaki",
+        brideFull: "Nama Penuh Pengantin Perempuan",
+        groomFull: "Nama Penuh Pengantin Lelaki"
+    },
+    event: {
+        date: "25 Januari 2026",
+        day: "Sabtu",
+        time: "12:00 PM - 4:00 PM",
+        venue: "Nama Venue",
+        address: "Alamat Venue"
+    },
+    countdown: new Date(2026, 0, 25, 12, 0, 0),
+    gallery: ["URL_1", "URL_2", "URL_3", "URL_4"],
+    story: {
+        title: "Our Love Story",
+        text: "Cerita cinta..."
+    },
+    parents: {
+        bride: ["Nama Bapa", "Nama Ibu"],
+        groom: ["Nama Bapa", "Nama Ibu"]
+    },
+    rsvp: {
+        whatsapp: "60123456789",
+        deadline: "15 Januari 2026"
+    },
+    gift: {
+        bank: "Maybank",
+        account: "1234567890",
+        name: "Nama Akaun"
+    }
+};
+```
+
+
+================================================================================
+                         27. TEMPLATE1.HTML (BCL STYLE)
+================================================================================
+
+GAMBAR DIPERLUKAN: 5 gambar
+- gallery[0-4]: Gambar untuk slideshow
+
+CONFIG YANG PERLU DIEDIT:
+```javascript
+const CONFIG = {
+    brand: {
+        name: "Nama Brand",
+        icon: "payments",
+        copyright: "© 2026 Nama Anda"
+    },
+    colors: {
+        primary: "#6366f1",
+        bgDark: "#0f172a",
+        cocoaDark: "#1e293b",
+        cocoaBorder: "#334155",
+        textMuted: "#94a3b8"
+    },
+    hero: {
+        badge: "Badge Text",
+        title: "Tajuk dengan <span class='text-primary'>highlight</span>",
+        description: "Penerangan penuh"
+    },
+    gallery: [
+        "URL_1", "URL_2", "URL_3", "URL_4", "URL_5"
+    ],
+    urgency: {
+        title: "Tawaran Terhad 2026",
+        text: "Penerangan tawaran dengan <span>highlight</span>"
+    },
+    features: {
+        title: "Kenapa Pilih Kami?",
+        subtitle: "Subtajuk features",
+        items: [
+            { icon: "qr_code_2", title: "Feature 1", desc: "Penerangan" },
+            { icon: "web", title: "Feature 2", desc: "Penerangan" },
+            { icon: "receipt_long", title: "Feature 3", desc: "Penerangan" }
+        ]
+    },
+    testimonials: [
+        { name: "Nama", role: "Jawatan", text: "Testimoni..." },
+        // 5 testimoni untuk scrolling carousel
+    ]
+};
+```
+
+
+================================================================================
+                       SENARAI MATERIAL ICONS POPULAR
+================================================================================
+
+PEMBAYARAN & BISNES:
+- payments, credit_card, account_balance, receipt_long, shopping_cart
+- storefront, shop, point_of_sale, qr_code_2, wallet
+
+KOMUNIKASI:
+- chat, email, call, support_agent, contact_support, forum
+
+KESELAMATAN:
+- lock, security, verified, shield, admin_panel_settings
+
+NAVIGASI:
+- arrow_forward, chevron_right, chevron_left, menu, close
+
+TINDAKAN:
+- check, check_circle, add, remove, edit, delete, download, upload
+
+SOSIAL:
+- person, group, groups, people, account_circle
+
+LAIN-LAIN:
+- star, favorite, thumb_up, schedule, location_on, local_shipping
+- bolt, rocket_launch, trending_up, analytics, insights
+- school, fitness_center, restaurant, spa, flight_takeoff
+- videocam, mic, headphones, play_circle
+
+Senarai penuh: https://fonts.google.com/icons
+
+
+================================================================================
+                           TIPS PEMILIHAN GAMBAR
+================================================================================
+
+1. SAIZ GAMBAR DISYORKAN:
+   - Hero/Banner: 1200x800px atau 16:9 ratio
+   - Produk: 800x800px (square) atau 4:3 ratio
+   - Thumbnail: 400x400px
+   - Profile/Avatar: 200x200px
+
+2. FORMAT:
+   - JPG untuk foto
+   - PNG untuk gambar dengan transparency
+   - WebP untuk fail lebih kecil (jika browser support)
+
+3. HOSTING GAMBAR PERCUMA:
+   - Imgur.com
+   - ImgBB.com
+   - Cloudinary.com
+   - Unsplash.com (stok gambar percuma)
+
+4. OPTIMASI:
+   - Compress gambar sebelum upload
+   - Guna lazy loading untuk gambar banyak
+   - Pastikan URL gambar adalah HTTPS
+
+
+================================================================================
+                              CARA MENGEDIT
+================================================================================
+
+1. Buka fail HTML dengan text editor (VS Code, Notepad++, dll)
+
+2. Cari bahagian "const CONFIG = {" di bahagian atas fail
+
+3. Edit nilai-nilai dalam CONFIG mengikut keperluan
+
+4. JANGAN edit kod di bawah garisan:
+   "DO NOT EDIT BELOW THIS LINE"
+
+5. Simpan fail dan refresh browser untuk lihat perubahan
+
+6. Untuk payment form, tambah kod form anda di bahagian:
+   <!-- Your payment form will be inserted here -->
+
+
+================================================================================
+                         HAK CIPTA & KREDIT
+================================================================================
+
+Template ini dicipta oleh Ilham Syafiq (2026)
+Semua hak cipta terpelihara.
+
+Untuk sokongan atau pertanyaan, sila hubungi pembangun.
+
+================================================================================

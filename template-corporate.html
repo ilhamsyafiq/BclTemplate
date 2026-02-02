@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BCL.my - Corporate Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+// ╔══════════════════════════════════════════════════════════════════════════════╗
+// ║                        EDIT YOUR CONTENT HERE                                 ║
+// ╚══════════════════════════════════════════════════════════════════════════════╝
+const CONFIG = {
+    brand: { name: "BCL.my", icon: "payments", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    colors: { primary: "#1e40af", bg: "#ffffff" },
+    hero: {
+        badge: "Enterprise Payment Solutions",
+        title: "Streamline Your Business Payments",
+        description: "A comprehensive payment platform designed for Malaysian enterprises. Accept payments, manage invoices, and scale your operations efficiently."
+    },
+    gallery: [
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-new/bcl-dashboard.png"
+    ],
+    features: {
+        title: "Enterprise-Grade Solutions",
+        subtitle: "Trusted by leading Malaysian businesses",
+        items: [
+            { icon: "qr_code_2", title: "Payment Terminals", desc: "Deploy DuitNow QR terminals across multiple locations with centralized management." },
+            { icon: "web", title: "Digital Storefronts", desc: "Create professional landing pages with integrated payment processing." },
+            { icon: "receipt_long", title: "E-Invoice Compliance", desc: "Automatic LHDN MyInvois integration with real-time validation." },
+            { icon: "analytics", title: "Business Intelligence", desc: "Comprehensive reporting and analytics across all payment channels." },
+            { icon: "security", title: "Enterprise Security", desc: "Bank-grade encryption with PCI DSS compliance standards." },
+            { icon: "support_agent", title: "Dedicated Support", desc: "Priority support with dedicated account management." }
+        ]
+    },
+    testimonials: [
+        { name: "Adly Mukhtar", role: "Co-founder, Sihaté", text: "BCL.my eliminated manual payment verification, saving us hours of administrative work daily." },
+        { name: "Nurnabilah", role: "Director, AMRU", text: "The instant transfer and BNPL options significantly improved our conversion rates and customer satisfaction." }
+    ],
+    packages: {
+        title: "Enterprise Plans",
+        items: [
+            { name: "Business", price: "RM888/year", badge: null, features: ["All payment methods", "Custom domain", "Standard support", "Basic analytics"], buttonText: "Get Started", buttonLink: "#" },
+            { name: "Enterprise", price: "RM1,888/year", badge: "Recommended", features: ["Everything in Business", "API access", "Advanced analytics", "Dedicated manager"], buttonText: "Contact Sales", buttonLink: "#" },
+            { name: "Custom", price: "Custom", badge: null, features: ["Tailored solutions", "SLA guarantee", "On-premise option", "24/7 support"], buttonText: "Request Quote", buttonLink: "#" }
+        ]
+    },
+    clients: ["Dexandra", "Siti Khadijah", "Nasken", "Syria Care", "Monaliza", "Simplisiti"]
+};
+</script>
+
+<style>
+body { font-family: 'Source Sans 3', sans-serif; }
+</style>
+
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen bg-white">
+            <!-- Nav -->
+            <nav class="bg-white border-b border-gray-100 px-6 py-4">
+                <div class="max-w-7xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-800 rounded flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white">${c.brand.icon}</span>
+                        </div>
+                        <span class="font-bold text-xl text-gray-900">${c.brand.name}</span>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <a href="#payment-form" class="text-gray-600 hover:text-gray-900 font-medium">Solutions</a>
+                        <a href="#payment-form" class="text-gray-600 hover:text-gray-900 font-medium">Pricing</a>
+                        <a href="#payment-form" class="text-gray-600 hover:text-gray-900 font-medium">Resources</a>
+                        <a href="#payment-form" class="bg-blue-800 text-white px-5 py-2.5 rounded font-medium hover:bg-blue-900">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white px-6 py-24">
+                <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="inline-block bg-blue-700/50 px-4 py-2 rounded text-sm font-medium mb-6">${c.hero.badge}</span>
+                        <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6">${c.hero.title}</h1>
+                        <p class="text-xl text-blue-100 mb-8 leading-relaxed">${c.hero.description}</p>
+                        <div class="flex gap-4">
+                            <a href="#payment-form" class="bg-white text-blue-900 px-8 py-4 rounded font-semibold hover:bg-blue-50">Daftar Sekarang</a>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="${c.gallery[0]}" alt="Platform" class="rounded-lg shadow-2xl"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clients -->
+            <section class="bg-gray-50 px-6 py-12 border-b border-gray-100">
+                <div class="max-w-7xl mx-auto">
+                    <p class="text-center text-gray-500 text-sm font-medium mb-8">TRUSTED BY LEADING MALAYSIAN COMPANIES</p>
+                    <div class="flex justify-center items-center gap-12 flex-wrap">
+                        ${c.clients.map(client => `<span class="text-gray-400 font-semibold text-lg">${client}</span>`).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="px-6 py-24">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">${c.features.title}</h2>
+                        <p class="text-xl text-gray-600">${c.features.subtitle}</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${c.features.items.map(f => `
+                            <div class="border border-gray-200 rounded-lg p-8 hover:border-blue-300 hover:shadow-lg transition-all">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                                    <span class="material-symbols-outlined text-blue-800">${f.icon}</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">${f.title}</h3>
+                                <p class="text-gray-600 leading-relaxed">${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="bg-gray-50 px-6 py-24">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-3xl font-bold text-gray-900 text-center mb-16">Client Success Stories</h2>
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-white border border-gray-200 rounded-lg p-10">
+                                <p class="text-xl text-gray-700 leading-relaxed mb-8">"${t.text}"</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 bg-blue-800 rounded-full flex items-center justify-center text-white font-bold text-xl">${t.name[0]}</div>
+                                    <div>
+                                        <div class="font-semibold text-gray-900">${t.name}</div>
+                                        <div class="text-gray-500">${t.role}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-20">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-8">Daftar Sekarang</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="bg-blue-900 px-6 py-20">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-white mb-6">Ready to transform your payment operations?</h2>
+                    <p class="text-xl text-blue-200 mb-10">Schedule a consultation with our enterprise solutions team.</p>
+                    <a href="#payment-form" class="inline-block bg-white text-blue-900 px-10 py-4 rounded font-semibold hover:bg-blue-50">Daftar Sekarang</a>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="bg-gray-900 px-6 py-8">
+                <div class="max-w-7xl mx-auto text-center text-gray-400 text-sm">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

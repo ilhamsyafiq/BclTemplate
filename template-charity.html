@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Charity & Donation Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "HopeFoundation", icon: "volunteer_activism", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    campaign: {
+        title: "Bantuan Banjir Kelantan 2026",
+        description: "Mari bersama hulurkan bantuan kepada mangsa banjir di Kelantan. Setiap sumbangan memberi harapan.",
+        goal: 500000,
+        raised: 347850,
+        donors: 2847,
+        daysLeft: 15,
+        image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200"
+    },
+    donationAmounts: [50, 100, 200, 500, 1000],
+    impact: [
+        { amount: "RM50", impact: "Bekalan makanan untuk 1 keluarga selama 3 hari" },
+        { amount: "RM100", impact: "Kit kebersihan dan pakaian untuk 1 keluarga" },
+        { amount: "RM200", impact: "Tilam, selimut dan keperluan asas" },
+        { amount: "RM500", impact: "Bantuan penuh untuk 1 keluarga selama seminggu" }
+    ],
+    updates: [
+        { date: "20 Dis", text: "Agihan bantuan fasa 3 di Pasir Mas telah selesai" },
+        { date: "18 Dis", text: "500 pek makanan diagihkan di Kuala Krai" },
+        { date: "15 Dis", text: "Pasukan sukarelawan tiba di lokasi" }
+    ],
+    partners: ["Red Crescent", "MERCY Malaysia", "Islamic Relief"],
+    cta: { text: "DERMA SEKARANG", link: "#donate" }
+};
+</script>
+<style>
+body { font-family: 'Poppins', sans-serif; }
+</style>
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    const progress = (c.campaign.raised / c.campaign.goal * 100).toFixed(1);
+
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen bg-gray-50">
+            <!-- Nav -->
+            <nav class="bg-white shadow-sm px-6 py-4">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-teal-600">
+                        <span class="material-symbols-outlined text-3xl">${c.brand.icon}</span>
+                        <span class="font-bold text-xl">${c.brand.name}</span>
+                    </div>
+                    <a href="${c.cta.link}" class="bg-teal-600 text-white px-6 py-2 rounded-full font-medium hover:bg-teal-700">${c.cta.text}</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="relative">
+                <div class="h-[50vh] bg-cover bg-center" style="background-image: url('${c.campaign.image}')">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 px-6 pb-8">
+                    <div class="max-w-4xl mx-auto text-white">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4">${c.campaign.title}</h1>
+                        <p class="text-xl text-white/90">${c.campaign.description}</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress -->
+            <section class="px-6 -mt-6 relative z-10">
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-teal-600">RM${c.campaign.raised.toLocaleString()}</div>
+                            <div class="text-gray-500">terkumpul dari RM${c.campaign.goal.toLocaleString()}</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-teal-600">${c.campaign.donors.toLocaleString()}</div>
+                            <div class="text-gray-500">penderma</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-orange-500">${c.campaign.daysLeft}</div>
+                            <div class="text-gray-500">hari lagi</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="h-4 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 rounded-full transition-all" style="width: ${progress}%"></div>
+                        </div>
+                        <div class="text-right text-sm text-gray-500 mt-2">${progress}% tercapai</div>
+                    </div>
+
+                    <a href="${c.cta.link}" class="block w-full bg-teal-600 text-white text-center py-4 rounded-xl font-bold text-lg hover:bg-teal-700">${c.cta.text}</a>
+                </div>
+            </section>
+
+            <!-- Donation Form -->
+            <section id="donate" class="px-6 py-16">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-8">Pilih Jumlah Derma</h2>
+
+                    <div class="grid grid-cols-3 md:grid-cols-5 gap-3 mb-6">
+                        ${c.donationAmounts.map((amt, i) => `
+                            <button class="py-4 rounded-xl font-semibold ${i === 2 ? 'bg-teal-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-teal-50 hover:text-teal-600'} transition-colors">
+                                RM${amt}
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm text-gray-600 mb-2">Atau masukkan jumlah lain</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">RM</span>
+                            <input type="number" placeholder="0" class="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:border-teal-500"/>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-teal-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-teal-700">
+                        Teruskan ke Pembayaran
+                    </button>
+
+                    <p class="text-center text-sm text-gray-500 mt-4">🔒 Pembayaran selamat melalui FPX & kad kredit</p>
+                </div>
+            </section>
+
+            <!-- Impact -->
+            <section class="px-6 py-16 bg-teal-50">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12">Impak Sumbangan Anda</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        ${c.impact.map(i => `
+                            <div class="bg-white p-6 rounded-xl flex gap-4 items-start">
+                                <div class="bg-teal-100 text-teal-600 px-4 py-2 rounded-lg font-bold">${i.amount}</div>
+                                <p class="text-gray-700">${i.impact}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Updates -->
+            <section class="px-6 py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12">Kemaskini Terkini</h2>
+                    <div class="space-y-4">
+                        ${c.updates.map(u => `
+                            <div class="bg-white p-6 rounded-xl border border-gray-100 flex gap-4 items-center">
+                                <div class="bg-gray-100 px-4 py-2 rounded-lg text-sm font-semibold text-gray-600">${u.date}</div>
+                                <p class="text-gray-700">${u.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Partners -->
+            <section class="px-6 py-16 bg-gray-100">
+                <div class="max-w-4xl mx-auto text-center">
+                    <p class="text-gray-500 mb-8">Disokong oleh</p>
+                    <div class="flex justify-center gap-12 flex-wrap">
+                        ${c.partners.map(p => `<span class="text-2xl font-bold text-gray-400">${p}</span>`).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <footer class="bg-gray-900 px-6 py-8">
+                <div class="text-center text-gray-400">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

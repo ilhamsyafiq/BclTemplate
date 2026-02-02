@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BCL.my - Dark Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+// ╔══════════════════════════════════════════════════════════════════════════════╗
+// ║                        EDIT YOUR CONTENT HERE                                 ║
+// ╚══════════════════════════════════════════════════════════════════════════════╝
+const CONFIG = {
+    brand: { name: "BCL.my", icon: "payments", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    colors: { primary: "#22d3ee", bg: "#09090b" },
+    hero: {
+        badge: "⚡ Powered by DuitNow",
+        title: "Next-gen payments for next-gen business",
+        description: "Accept payments instantly with QR codes, forms, and landing pages. Built for speed."
+    },
+    gallery: [
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-new/bcl-dashboard.png"
+    ],
+    features: {
+        title: "Features",
+        subtitle: "Everything runs faster",
+        items: [
+            { icon: "bolt", title: "Instant Setup", desc: "Go live in under 60 seconds" },
+            { icon: "qr_code_2", title: "QR Terminal", desc: "Any device becomes a POS" },
+            { icon: "trending_up", title: "Analytics", desc: "Real-time sales tracking" },
+            { icon: "lock", title: "Secure", desc: "Bank-grade encryption" }
+        ]
+    },
+    testimonials: [
+        { name: "Adly", role: "Sihaté", text: "Lightning fast setup and payments." },
+        { name: "Nurnabilah", role: "AMRU", text: "Our conversion rates jumped 40%." },
+        { name: "Leena", role: "Ola Agency", text: "Simple, fast, perfect." }
+    ],
+    packages: {
+        title: "Pricing",
+        items: [
+            { name: "Free", price: "RM0", badge: null, features: ["Unlimited links", "Basic features"], buttonText: "Start", buttonLink: "#" },
+            { name: "Pro", price: "RM1,888/yr", badge: "Popular", features: ["All features", "Priority support"], buttonText: "Go Pro", buttonLink: "#" }
+        ]
+    }
+};
+</script>
+
+<style>
+body { font-family: 'Space Grotesk', sans-serif; background: #09090b; }
+.glow { box-shadow: 0 0 60px rgba(34, 211, 238, 0.3); }
+</style>
+
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen text-white">
+            <!-- Grid background -->
+            <div class="fixed inset-0 -z-10 bg-[linear-gradient(rgba(34,211,238,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+
+            <!-- Nav -->
+            <nav class="px-6 py-6 border-b border-white/5">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-cyan-400">${c.brand.icon}</span>
+                        <span class="font-bold text-xl">${c.brand.name}</span>
+                    </div>
+                    <a href="#payment-form" class="bg-cyan-400 text-black px-5 py-2 rounded font-semibold hover:bg-cyan-300">Daftar Sekarang</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="px-6 py-32">
+                <div class="max-w-4xl mx-auto text-center">
+                    <span class="inline-block bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 px-4 py-2 rounded text-sm font-mono mb-8">${c.hero.badge}</span>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">${c.hero.title}</h1>
+                    <p class="text-xl text-zinc-400 mb-10">${c.hero.description}</p>
+                    <div class="flex gap-4 justify-center">
+                        <a href="#payment-form" class="bg-cyan-400 text-black px-8 py-4 rounded font-semibold hover:bg-cyan-300">Daftar Sekarang →</a>
+                    </div>
+                </div>
+                <div class="max-w-5xl mx-auto mt-20">
+                    <div class="rounded-lg border border-cyan-400/30 p-1 glow">
+                        <img src="${c.gallery[0]}" alt="Dashboard" class="rounded w-full"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="px-6 py-24 border-t border-white/5">
+                <div class="max-w-6xl mx-auto">
+                    <div class="flex items-end justify-between mb-16">
+                        <div>
+                            <h2 class="text-3xl font-bold">${c.features.title}</h2>
+                            <p class="text-zinc-500 mt-2">${c.features.subtitle}</p>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${c.features.items.map(f => `
+                            <div class="bg-zinc-900/50 border border-zinc-800 p-6 rounded-lg hover:border-cyan-400/50 transition-colors group">
+                                <span class="material-symbols-outlined text-cyan-400 text-3xl mb-4 group-hover:scale-110 transition-transform inline-block">${f.icon}</span>
+                                <h3 class="text-lg font-semibold mb-2">${f.title}</h3>
+                                <p class="text-zinc-500 text-sm">${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <section class="px-6 py-24 border-t border-white/5">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        <div>
+                            <div class="text-5xl font-bold text-cyan-400">10K+</div>
+                            <div class="text-zinc-500 mt-2">Active Users</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold text-cyan-400">RM50M+</div>
+                            <div class="text-zinc-500 mt-2">Processed</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold text-cyan-400">&lt;1s</div>
+                            <div class="text-zinc-500 mt-2">Payment Time</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="px-6 py-24 border-t border-white/5">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-16">What users say</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-zinc-900/50 border border-zinc-800 p-6 rounded-lg">
+                                <p class="text-zinc-300 mb-6">"${t.text}"</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full"></div>
+                                    <div>
+                                        <div class="font-semibold">${t.name}</div>
+                                        <div class="text-sm text-zinc-500">${t.role}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-24 border-t border-white/5">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold mb-8">Daftar Sekarang</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="border-t border-white/5 px-6 py-8">
+                <div class="max-w-6xl mx-auto text-center text-zinc-600 text-sm">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BCL.my - Bold Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+// ╔══════════════════════════════════════════════════════════════════════════════╗
+// ║                        EDIT YOUR CONTENT HERE                                 ║
+// ╚══════════════════════════════════════════════════════════════════════════════╝
+const CONFIG = {
+    brand: { name: "BCL.MY", icon: "payments", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    colors: { primary: "#dc2626", bg: "#000000" },
+    hero: {
+        badge: "PAYMENT REVOLUTION",
+        title: "ACCEPT PAYMENTS ANYWHERE",
+        description: "QR codes. Landing pages. Invoices. Everything you need to get paid."
+    },
+    gallery: [
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-new/bcl-dashboard.png",
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-v2/qr-phone.png"
+    ],
+    features: {
+        title: "POWER FEATURES",
+        items: [
+            { icon: "qr_code_2", title: "QR TERMINAL", desc: "Any device. Any location." },
+            { icon: "web", title: "LANDING PAGES", desc: "Build. Launch. Convert." },
+            { icon: "receipt_long", title: "E-INVOICE", desc: "LHDN compliant. Automatic." },
+            { icon: "speed", title: "INSTANT", desc: "Real-time everything." }
+        ]
+    },
+    testimonials: [
+        { name: "ADLY M.", role: "FOUNDER", text: "GAME CHANGER." },
+        { name: "NURNABILAH", role: "DIRECTOR", text: "40% MORE SALES." },
+        { name: "LEENA", role: "CEO", text: "SIMPLY PERFECT." }
+    ],
+    packages: {
+        title: "PLANS",
+        items: [
+            { name: "FREE", price: "RM0", badge: null, features: ["Unlimited links", "Basic features"], buttonText: "START FREE", buttonLink: "#" },
+            { name: "PRO", price: "RM1,888", badge: "BEST", features: ["All features", "Priority support"], buttonText: "GO PRO", buttonLink: "#" }
+        ]
+    }
+};
+</script>
+
+<style>
+body { font-family: 'Inter', sans-serif; background: #000; }
+.display { font-family: 'Bebas Neue', sans-serif; }
+</style>
+
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen text-white">
+            <!-- Nav -->
+            <nav class="px-6 py-6">
+                <div class="max-w-7xl mx-auto flex items-center justify-between">
+                    <span class="display text-3xl tracking-wider">${c.brand.name}</span>
+                    <a href="#payment-form" class="bg-red-600 px-6 py-3 font-semibold hover:bg-red-700">DAFTAR SEKARANG</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="px-6 py-32 relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center opacity-5">
+                    <span class="display text-[40vw] leading-none">PAY</span>
+                </div>
+                <div class="max-w-7xl mx-auto relative">
+                    <span class="inline-block bg-red-600 px-4 py-2 text-sm font-semibold tracking-widest mb-8">${c.hero.badge}</span>
+                    <h1 class="display text-7xl md:text-9xl leading-none mb-8">${c.hero.title}</h1>
+                    <p class="text-2xl text-gray-400 max-w-2xl mb-12">${c.hero.description}</p>
+                    <a href="#payment-form" class="inline-block bg-red-600 px-12 py-5 text-xl font-semibold hover:bg-red-700">DAFTAR SEKARANG</a>
+                </div>
+            </section>
+
+            <!-- Image -->
+            <section class="px-6 py-12">
+                <div class="max-w-6xl mx-auto">
+                    <div class="border-4 border-red-600">
+                        <img src="${c.gallery[0]}" alt="Dashboard" class="w-full"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="px-6 py-24">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="display text-6xl mb-16">${c.features.title}</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-1">
+                        ${c.features.items.map(f => `
+                            <div class="bg-zinc-900 p-8 hover:bg-red-600 transition-colors group">
+                                <span class="material-symbols-outlined text-red-600 text-4xl mb-6 group-hover:text-white">${f.icon}</span>
+                                <h3 class="display text-3xl mb-2">${f.title}</h3>
+                                <p class="text-gray-400 group-hover:text-white/80">${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <section class="px-6 py-24 bg-red-600">
+                <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="display text-8xl">10K+</div>
+                        <div class="text-red-200">USERS</div>
+                    </div>
+                    <div>
+                        <div class="display text-8xl">RM50M</div>
+                        <div class="text-red-200">PROCESSED</div>
+                    </div>
+                    <div>
+                        <div class="display text-8xl">99.9%</div>
+                        <div class="text-red-200">UPTIME</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="px-6 py-24">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid md:grid-cols-3 gap-1">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-zinc-900 p-10">
+                                <p class="display text-4xl mb-6">"${t.text}"</p>
+                                <div class="text-gray-400">
+                                    <span class="text-white font-semibold">${t.name}</span> / ${t.role}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-20">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-5xl font-bold mb-8">DAFTAR SEKARANG</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="px-6 py-32 text-center">
+                <h2 class="display text-7xl md:text-9xl mb-8">READY?</h2>
+                <a href="#payment-form" class="inline-block bg-red-600 px-16 py-6 text-2xl font-semibold hover:bg-red-700">DAFTAR SEKARANG</a>
+            </section>
+
+            <!-- Footer -->
+            <footer class="border-t border-zinc-800 px-6 py-8">
+                <div class="max-w-7xl mx-auto text-center text-zinc-600">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

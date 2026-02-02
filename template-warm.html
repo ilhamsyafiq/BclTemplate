@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BCL.my - Warm Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+// ╔══════════════════════════════════════════════════════════════════════════════╗
+// ║                        EDIT YOUR CONTENT HERE                                 ║
+// ╚══════════════════════════════════════════════════════════════════════════════╝
+const CONFIG = {
+    brand: { name: "BCL.my", icon: "payments", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    colors: { primary: "#b45309", bg: "#fffbeb" },
+    hero: {
+        badge: "Trusted Payment Partner",
+        title: "Accept payments with confidence",
+        description: "A warm, reliable platform for Malaysian businesses to manage QR payments, landing pages, and invoicing."
+    },
+    gallery: [
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-new/bcl-dashboard.png",
+        "https://main.bcl.my/wp-content/themes/astra-child/assets/images/home-v2/qr-phone.png"
+    ],
+    features: {
+        title: "Built with care",
+        subtitle: "Features that make a difference",
+        items: [
+            { icon: "qr_code_2", title: "DuitNow QR", desc: "Accept instant payments with secure QR codes at any location." },
+            { icon: "web", title: "Landing Pages", desc: "Create beautiful, conversion-focused pages without any coding." },
+            { icon: "receipt_long", title: "E-Invoice", desc: "Generate LHDN-compliant invoices automatically with every sale." }
+        ]
+    },
+    testimonials: [
+        { name: "Adly Mukhtar", role: "Sihaté Co-founder", text: "BCL transformed how we handle payments. The automatic verification alone saved us countless hours." },
+        { name: "Nurnabilah", role: "AMRU Director", text: "With instant transfers and BNPL options, our customers love the flexibility. Our sales have never been better." },
+        { name: "Cikgu Siti", role: "Tuition Centre Owner", text: "Collecting fees from parents is now hassle-free. BCL made my life so much easier!" }
+    ],
+    packages: {
+        title: "Choose your plan",
+        items: [
+            { name: "Starter", price: "Free", badge: null, features: ["Unlimited payment links", "FPX at RM1.00", "Email support"], buttonText: "Get Started", buttonLink: "#" },
+            { name: "Professional", price: "RM888/year", badge: "Most Popular", features: ["Everything in Starter", "Custom domain", "Fast support"], buttonText: "Choose Plan", buttonLink: "#" }
+        ]
+    }
+};
+</script>
+
+<style>
+body { font-family: 'Open Sans', sans-serif; background: #fffbeb; }
+h1, h2, h3 { font-family: 'Lora', serif; }
+</style>
+
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen">
+            <!-- Nav -->
+            <nav class="px-6 py-6">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-amber-100">${c.brand.icon}</span>
+                        </div>
+                        <span class="font-bold text-xl text-amber-900">${c.brand.name}</span>
+                    </div>
+                    <a href="#payment-form" class="bg-amber-700 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-800">Daftar Sekarang</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <section class="px-6 py-20">
+                <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                            <span class="material-symbols-outlined text-sm">verified</span>
+                            ${c.hero.badge}
+                        </span>
+                        <h1 class="text-4xl lg:text-5xl text-amber-950 leading-tight mb-6">${c.hero.title}</h1>
+                        <p class="text-lg text-amber-800/70 mb-8 leading-relaxed">${c.hero.description}</p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#payment-form" class="bg-amber-700 text-white px-8 py-4 rounded-full font-semibold hover:bg-amber-800">Daftar Sekarang</a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-amber-200 rounded-3xl transform rotate-3"></div>
+                        <img src="${c.gallery[0]}" alt="Dashboard" class="relative rounded-3xl shadow-xl"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="px-6 py-24 bg-white">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl lg:text-4xl text-amber-950 mb-4">${c.features.title}</h2>
+                        <p class="text-amber-800/70 text-lg">${c.features.subtitle}</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        ${c.features.items.map(f => `
+                            <div class="bg-amber-50 rounded-3xl p-10 hover:shadow-lg transition-shadow">
+                                <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6">
+                                    <span class="material-symbols-outlined text-amber-700 text-3xl">${f.icon}</span>
+                                </div>
+                                <h3 class="text-xl text-amber-950 mb-3">${f.title}</h3>
+                                <p class="text-amber-800/70 leading-relaxed">${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="px-6 py-24">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl lg:text-4xl text-amber-950 text-center mb-16">Stories from our community</h2>
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-white rounded-3xl p-10 shadow-sm">
+                                <div class="flex gap-1 mb-6">
+                                    ${[1,2,3,4,5].map(() => '<span class="material-symbols-outlined text-amber-400">star</span>').join('')}
+                                </div>
+                                <p class="text-amber-800/80 leading-relaxed mb-8">"${t.text}"</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-amber-300 to-amber-500 rounded-full"></div>
+                                    <div>
+                                        <div class="font-semibold text-amber-950">${t.name}</div>
+                                        <div class="text-amber-700 text-sm">${t.role}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Section -->
+            <section id="payment-form" class="px-6 py-20">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-8">Daftar Sekarang</h2>
+                    <!-- Your payment form will be inserted here -->
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="px-6 py-24">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl lg:text-4xl text-amber-950 mb-6">Ready to grow your business?</h2>
+                    <p class="text-lg text-amber-800/70 mb-10">Join thousands of Malaysian businesses using BCL.my</p>
+                    <a href="#payment-form" class="inline-block bg-amber-700 text-white px-12 py-5 rounded-full font-semibold text-lg hover:bg-amber-800">Daftar Sekarang</a>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="bg-amber-900 px-6 py-8">
+                <div class="max-w-6xl mx-auto text-center text-amber-200 text-sm">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

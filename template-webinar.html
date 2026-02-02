@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Webinar Registration Template</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0f172a;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<script>
+const CONFIG = {
+  brand: { name: "WebinarPro", icon: "videocam" },
+  webinar: {
+    badge: "🎓 WEBINAR PERCUMA",
+    title: "Rahsia Jana RM10,000 Pertama Dengan Bisnes Online",
+    description: "Sertai webinar LIVE dan belajar strategi proven untuk mulakan bisnes online dari rumah.",
+    date: "25 Februari 2026",
+    time: "8:30 PM",
+    duration: "2 jam",
+    platform: "Zoom",
+    seats: 500,
+    seatsLeft: 47
+  },
+  host: {
+    name: "Dr. Ahmad Faisal",
+    title: "Pakar Bisnes Digital",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200",
+    credentials: [
+      "15+ tahun pengalaman",
+      "500+ students berjaya",
+      "Featured in BFM, Astro"
+    ]
+  },
+  benefits: [
+    "3 strategi viral untuk produk digital",
+    "Cara setup kedai online dalam 24 jam",
+    "Template copywriting bernilai RM500",
+    "Akses ke private community",
+    "Replay selama 7 hari"
+  ],
+  testimonials: [
+    { name: "Azman", result: "RM15,000 dalam 30 hari pertama" },
+    { name: "Fazira", result: "Quit job, full-time bisnes online" },
+    { name: "Kumar", result: "Dari zero ke 6-figure income" }
+  ],
+  countdown: new Date(2026, 11, 25, 20, 30, 0),
+  cta: { text: "DAFTAR SEKARANG", link: "#payment-form" }
+};
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const end = CONFIG.countdown.getTime();
+  const diff = end - now;
+  if (diff <= 0) return;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  const values = { days, hours, minutes, seconds };
+  Object.keys(values).forEach(k => {
+    const el = document.getElementById(`cd-${k}`);
+    if (el) el.textContent = String(values[k]).padStart(2, "0");
+  });
+}
+
+function render() {
+  const c = CONFIG;
+
+  document.getElementById("app").innerHTML = `
+    <div class="min-h-screen text-white">
+
+      <!-- Top Bar -->
+      <div class="bg-gradient-to-r from-blue-600 to-purple-600 py-3 text-center text-sm font-medium">
+        ⚡ Hanya <span class="font-bold">${c.webinar.seatsLeft} tempat</span> sahaja tinggal!
+      </div>
+
+      <!-- Hero -->
+      <section class="px-6 py-16">
+        <div class="max-w-4xl mx-auto text-center">
+          <span class="inline-block bg-blue-500/20 border border-blue-500/30 text-blue-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            ${c.webinar.badge}
+          </span>
+
+          <h1 class="text-4xl md:text-6xl font-extrabold mb-6">
+            ${c.webinar.title}
+          </h1>
+
+          <p class="text-xl text-gray-400 mb-8">
+            ${c.webinar.description}
+          </p>
+
+          <!-- Event Details -->
+          <div class="flex flex-wrap justify-center gap-6 mb-10 text-lg">
+            <div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg">
+              <span class="material-symbols-outlined text-blue-400">calendar_today</span>
+              ${c.webinar.date}
+            </div>
+            <div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg">
+              <span class="material-symbols-outlined text-blue-400">schedule</span>
+              ${c.webinar.time}
+            </div>
+            <div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg">
+              <span class="material-symbols-outlined text-blue-400">videocam</span>
+              ${c.webinar.platform}
+            </div>
+          </div>
+
+          <!-- Countdown -->
+          <div class="mb-10">
+            <div class="text-gray-400 mb-4">Webinar bermula dalam:</div>
+            <div class="flex gap-4 justify-center">
+              ${["days","hours","minutes","seconds"].map(k => `
+                <div class="bg-white/10 rounded-xl p-4 min-w-[70px]">
+                  <div id="cd-${k}" class="text-3xl font-bold">00</div>
+                  <div class="text-xs text-gray-500 capitalize">${k}</div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <a href="${c.cta.link}"
+             class="inline-block bg-gradient-to-r from-blue-500 to-purple-500 px-12 py-5 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-lg shadow-blue-500/30">
+            ${c.cta.text}
+          </a>
+        </div>
+      </section>
+
+      <!-- Host -->
+      <section class="px-6 py-16 bg-white/5">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+          <img src="${c.host.image}" class="w-48 h-48 rounded-full border-4 border-blue-500 object-cover"/>
+          <div>
+            <div class="text-blue-400 font-semibold mb-2">Pembentang Anda</div>
+            <h2 class="text-3xl font-bold mb-2">${c.host.name}</h2>
+            <div class="text-gray-400 mb-4">${c.host.title}</div>
+            <div class="flex flex-wrap gap-2">
+              ${c.host.credentials.map(cr => `
+                <span class="bg-white/10 px-3 py-1 rounded-full text-sm">${cr}</span>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits -->
+      <section class="px-6 py-16">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-12">Apa Yang Anda Akan Belajar</h2>
+          <div class="space-y-4">
+            ${c.benefits.map(b => `
+              <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl">
+                <span class="material-symbols-outlined text-green-400">check_circle</span>
+                <span class="text-lg">${b}</span>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      </section>
+
+      <!-- PAYMENT FORM TARGET -->
+      <section id="payment-form" class="px-6 py-20 bg-gradient-to-br from-blue-600/20 to-purple-600/20">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6">Daftar Webinar Sekarang</h2>
+          <p class="text-gray-300 mb-8">Isi borang pendaftaran anda di sini 👇</p>
+          
+        </div>
+      </section>
+
+      <footer class="border-t border-white/10 px-6 py-8 text-center text-gray-500 text-sm">
+        © 2026 Ilham Syafiq. All Rights Reserved.
+      </footer>
+
+    </div>
+  `;
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+render();
+</script>
+
+</body>
+</html>

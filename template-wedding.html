@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Wedding Invitation Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    couple: {
+        bride: "Nur Aisyah",
+        groom: "Ahmad Faris",
+        brideFull: "Nur Aisyah binti Mohd Razak",
+        groomFull: "Ahmad Faris bin Abdullah"
+    },
+    event: {
+        date: "25 Januari 2026",
+        day: "Sabtu",
+        time: "12:00 PM - 4:00 PM",
+        venue: "Dewan Perdana, Hotel Grand Hyatt",
+        address: "Jalan Pinang, 50450 Kuala Lumpur"
+    },
+    countdown: new Date(2026, 0, 25, 12, 0, 0),
+    gallery: [
+        "https://images.unsplash.com/photo-1519741497674-611481863552?w=400",
+        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400",
+        "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400",
+        "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400"
+    ],
+    story: {
+        title: "Our Love Story",
+        text: "Kami bertemu di universiti pada tahun 2018, dan sejak hari itu, hidup kami berubah selamanya. Selepas 6 tahun bersama, kami akhirnya bersedia untuk memulakan perjalanan baru sebagai suami isteri."
+    },
+    parents: {
+        bride: ["Mohd Razak bin Hassan", "Fatimah binti Ahmad"],
+        groom: ["Abdullah bin Ismail", "Zainab binti Yusof"]
+    },
+    rsvp: {
+        whatsapp: "60123456789",
+        deadline: "15 Januari 2026"
+    },
+    gift: {
+        bank: "Maybank",
+        account: "1234567890",
+        name: "Ahmad Faris bin Abdullah"
+    }
+};
+</script>
+<style>
+body { font-family: 'Montserrat', sans-serif; background: #fdf8f4; }
+h1, h2, h3, .script { font-family: 'Cormorant Garamond', serif; }
+</style>
+<div id="app"></div>
+<script>
+function updateCountdown() {
+    const now = new Date().getTime();
+    const end = CONFIG.countdown.getTime();
+    const diff = end - now;
+    if (diff <= 0) return;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = hours;
+    document.getElementById('cd-minutes').textContent = minutes;
+    document.getElementById('cd-seconds').textContent = seconds;
+}
+
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen">
+            <!-- Hero -->
+            <section class="min-h-screen flex items-center justify-center text-center px-6 py-20" style="background: linear-gradient(rgba(253,248,244,0.9), rgba(253,248,244,0.9)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200') center/cover">
+                <div>
+                    <p class="text-rose-400 tracking-[0.5em] text-sm mb-8">WALIMATUL URUS</p>
+                    <h1 class="text-5xl md:text-7xl text-stone-700 mb-4">${c.couple.bride}</h1>
+                    <p class="text-3xl text-rose-400 my-6 script">&</p>
+                    <h1 class="text-5xl md:text-7xl text-stone-700 mb-8">${c.couple.groom}</h1>
+                    <p class="text-xl text-stone-500">${c.event.date}</p>
+                </div>
+            </section>
+
+            <!-- Countdown -->
+            <section class="px-6 py-16 bg-white">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-3xl text-stone-700 mb-8">Menghitung Hari</h2>
+                    <div class="flex justify-center gap-6">
+                        <div class="text-center"><div id="cd-days" class="text-4xl font-semibold text-rose-400">0</div><div class="text-stone-500 text-sm">Hari</div></div>
+                        <div class="text-center"><div id="cd-hours" class="text-4xl font-semibold text-rose-400">0</div><div class="text-stone-500 text-sm">Jam</div></div>
+                        <div class="text-center"><div id="cd-minutes" class="text-4xl font-semibold text-rose-400">0</div><div class="text-stone-500 text-sm">Minit</div></div>
+                        <div class="text-center"><div id="cd-seconds" class="text-4xl font-semibold text-rose-400">0</div><div class="text-stone-500 text-sm">Saat</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Parents -->
+            <section class="px-6 py-16">
+                <div class="max-w-4xl mx-auto text-center">
+                    <p class="text-stone-500 mb-8">Dengan penuh kesyukuran, kami menjemput Dato'/Datin/Tuan/Puan ke majlis perkahwinan putera dan puteri kami</p>
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <p class="text-sm text-rose-400 mb-2">Pengantin Perempuan</p>
+                            <h3 class="text-2xl text-stone-700 mb-4">${c.couple.brideFull}</h3>
+                            <p class="text-stone-500 text-sm">Puteri kepada</p>
+                            <p class="text-stone-600">${c.parents.bride[0]}</p>
+                            <p class="text-stone-600">${c.parents.bride[1]}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-rose-400 mb-2">Pengantin Lelaki</p>
+                            <h3 class="text-2xl text-stone-700 mb-4">${c.couple.groomFull}</h3>
+                            <p class="text-stone-500 text-sm">Putera kepada</p>
+                            <p class="text-stone-600">${c.parents.groom[0]}</p>
+                            <p class="text-stone-600">${c.parents.groom[1]}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Details -->
+            <section class="px-6 py-16 bg-rose-50">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-3xl text-stone-700 mb-8">Butiran Majlis</h2>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <div class="mb-6">
+                            <span class="material-symbols-outlined text-rose-400 text-3xl">calendar_today</span>
+                            <p class="text-xl text-stone-700 mt-2">${c.event.day}, ${c.event.date}</p>
+                            <p class="text-stone-500">${c.event.time}</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="material-symbols-outlined text-rose-400 text-3xl">location_on</span>
+                            <p class="text-xl text-stone-700 mt-2">${c.event.venue}</p>
+                            <p class="text-stone-500">${c.event.address}</p>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank" class="inline-block bg-rose-400 text-white px-6 py-3 rounded-full font-medium hover:bg-rose-500">
+                            <span class="material-symbols-outlined align-middle mr-1">map</span>Tunjuk Arah
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section class="px-6 py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl text-stone-700 text-center mb-8">Galeri</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        ${c.gallery.map(img => `<img src="${img}" class="w-full aspect-square object-cover rounded-xl"/>`).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gift -->
+            <section class="px-6 py-16 bg-white">
+                <div class="max-w-md mx-auto text-center">
+                    <span class="material-symbols-outlined text-rose-400 text-4xl mb-4">redeem</span>
+                    <h2 class="text-3xl text-stone-700 mb-4">Hadiah Perkahwinan</h2>
+                    <p class="text-stone-500 mb-6">Doa restu anda adalah hadiah terindah. Jika ingin memberi sumbangan:</p>
+                    <div class="bg-rose-50 p-6 rounded-xl">
+                        <p class="text-stone-600">${c.gift.bank}</p>
+                        <p class="text-2xl font-semibold text-stone-700 my-2">${c.gift.account}</p>
+                        <p class="text-stone-600">${c.gift.name}</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP -->
+            <section class="px-6 py-16 bg-stone-800 text-white text-center">
+                <div class="max-w-md mx-auto">
+                    <h2 class="text-3xl mb-4">RSVP</h2>
+                    <p class="text-stone-300 mb-6">Sila sahkan kehadiran sebelum ${c.rsvp.deadline}</p>
+                    <a href="https://wa.me/${c.rsvp.whatsapp}?text=Assalamualaikum, saya ingin mengesahkan kehadiran ke majlis perkahwinan ${c.couple.bride} dan ${c.couple.groom}" class="inline-block bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600">
+                        Sahkan via WhatsApp
+                    </a>
+                </div>
+            </section>
+
+            <footer class="px-6 py-8 text-center text-stone-400 text-sm">
+                ${c.couple.bride} ❤️ ${c.couple.groom}<br/>
+                <span class="mt-2 block">© 2026 Ilham Syafiq. All Rights Reserved.</span>
+            </footer>
+        </div>
+    `;
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Online Course Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "SkillMaster", icon: "school" },
+    course: {
+        badge: "BESTSELLER",
+        title: "Complete Digital Marketing Masterclass 2026",
+        subtitle: "From Zero to Pro in 8 Weeks",
+        description: "Learn Facebook Ads, Google Ads, SEO, Email Marketing, and Social Media Strategy from industry experts.",
+        price: "RM497",
+        originalPrice: "RM1,997",
+        discount: "75% OFF",
+        rating: 4.9,
+        reviews: 2847,
+        students: 15420,
+        lastUpdated: "Februari 2026",
+        language: "Bahasa Malaysia",
+        certificate: true
+    },
+    instructor: {
+        name: "Amir Hassan",
+        title: "Digital Marketing Expert",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200",
+        bio: "10+ tahun pengalaman dalam digital marketing. Bekas Marketing Director di Lazada Malaysia.",
+        students: "50,000+",
+        courses: 12,
+        rating: 4.8
+    },
+    curriculum: [
+        { module: "Module 1", title: "Asas Digital Marketing", lessons: 8, duration: "2 jam" },
+        { module: "Module 2", title: "Facebook & Instagram Ads", lessons: 15, duration: "4 jam" },
+        { module: "Module 3", title: "Google Ads Mastery", lessons: 12, duration: "3 jam" },
+        { module: "Module 4", title: "SEO & Content Marketing", lessons: 10, duration: "2.5 jam" },
+        { module: "Module 5", title: "Email Marketing Automation", lessons: 8, duration: "2 jam" },
+        { module: "Module 6", title: "Analytics & Optimization", lessons: 6, duration: "1.5 jam" }
+    ],
+    includes: [
+        { icon: "play_circle", text: "15 jam video on-demand" },
+        { icon: "download", text: "50+ templates & resources" },
+        { icon: "phone_iphone", text: "Akses mobile & desktop" },
+        { icon: "workspace_premium", text: "Sijil completion" },
+        { icon: "all_inclusive", text: "Akses seumur hidup" },
+        { icon: "update", text: "Updates percuma" }
+    ],
+    testimonials: [
+        { name: "Farah", role: "Business Owner", text: "Sales naik 300% selepas apply teknik dari kursus ini!", rating: 5 },
+        { name: "Rizal", role: "Marketing Executive", text: "Dapat promotion selepas tunjuk skill baru kat boss.", rating: 5 },
+        { name: "Maya", role: "Freelancer", text: "Sekarang boleh charge client RM3000 sebulan untuk FB Ads.", rating: 5 }
+    ],
+    guarantee: "30-Day Money Back Guarantee",
+    cta: { text: "Daftar Sekarang", link: "#payment-form" }
+};
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background: #f9fafb; }
+</style>
+<div id="app"></div>
+
+<script>
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen">
+            <!-- Hero -->
+            <section class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white px-6 py-16">
+                <div class="max-w-6xl mx-auto grid lg:grid-cols-5 gap-12 items-start">
+                    <div class="lg:col-span-3">
+                        <span class="inline-block bg-yellow-500 text-black px-3 py-1 text-sm font-bold rounded mb-4">${c.course.badge}</span>
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4">${c.course.title}</h1>
+                        <p class="text-xl text-purple-200 mb-4">${c.course.subtitle}</p>
+                        <p class="text-gray-300 mb-6">${c.course.description}</p>
+
+                        <div class="flex flex-wrap items-center gap-4 mb-6 text-sm">
+                            <div class="flex items-center gap-1">
+                                <span class="text-yellow-400 font-bold">${c.course.rating}</span>
+                                <div class="flex">${Array(5).fill('<span class="material-symbols-outlined text-yellow-400 text-sm">star</span>').join('')}</div>
+                                <span class="text-gray-400">(${c.course.reviews.toLocaleString()} reviews)</span>
+                            </div>
+                            <span class="text-gray-400">${c.course.students.toLocaleString()} students</span>
+                        </div>
+
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="${c.instructor.image}" class="w-12 h-12 rounded-full"/>
+                            <div>
+                                <div class="font-medium">Created by ${c.instructor.name}</div>
+                                <div class="text-sm text-gray-400">${c.instructor.title}</div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4 text-sm text-gray-300">
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">update</span> Last updated ${c.course.lastUpdated}</span>
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">language</span> ${c.course.language}</span>
+                            ${c.course.certificate ? '<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">workspace_premium</span> Certificate</span>' : ''}
+                        </div>
+                    </div>
+
+                    <!-- Price Card -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white text-gray-900 rounded-xl p-6 shadow-2xl sticky top-8">
+                            <div class="aspect-video bg-gray-200 rounded-lg mb-6 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-gray-400">play_circle</span>
+                            </div>
+                            <div class="flex items-baseline gap-3 mb-2">
+                                <span class="text-4xl font-bold">${c.course.price}</span>
+                                <span class="text-xl text-gray-400 line-through">${c.course.originalPrice}</span>
+                                <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm font-semibold">${c.course.discount}</span>
+                            </div>
+                            <p class="text-red-600 text-sm mb-6">⏰ Harga promosi tamat dalam 2 hari!</p>
+
+                            <a href="${c.cta.link}" class="block w-full bg-purple-600 text-white text-center py-4 rounded-lg font-bold text-lg hover:bg-purple-700 mb-4">${c.cta.text}</a>
+                            <p class="text-center text-sm text-gray-500 mb-6">${c.guarantee}</p>
+
+                            <div class="border-t pt-4">
+                                <div class="font-semibold mb-3">Kursus ini termasuk:</div>
+                                <div class="space-y-2">
+                                    ${c.includes.map(i => `<div class="flex items-center gap-2 text-sm text-gray-600"><span class="material-symbols-outlined text-purple-600">${i.icon}</span>${i.text}</div>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Curriculum -->
+            <section class="px-6 py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-8">Apa Yang Anda Akan Belajar</h2>
+                    <div class="space-y-4">
+                        ${c.curriculum.map((m, i) => `
+                            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                                <div class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <span class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center font-bold">${i + 1}</span>
+                                        <div>
+                                            <div class="font-semibold">${m.title}</div>
+                                            <div class="text-sm text-gray-500">${m.lessons} lessons • ${m.duration}</div>
+                                        </div>
+                                    </div>
+                                    <span class="material-symbols-outlined text-gray-400">expand_more</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instructor -->
+            <section class="px-6 py-16 bg-white">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-8">Instructor Anda</h2>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <img src="${c.instructor.image}" class="w-32 h-32 rounded-full object-cover"/>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-1">${c.instructor.name}</h3>
+                            <p class="text-purple-600 mb-4">${c.instructor.title}</p>
+                            <div class="flex gap-6 mb-4 text-sm">
+                                <div><span class="font-bold">${c.instructor.rating}</span> Rating</div>
+                                <div><span class="font-bold">${c.instructor.students}</span> Students</div>
+                                <div><span class="font-bold">${c.instructor.courses}</span> Courses</div>
+                            </div>
+                            <p class="text-gray-600">${c.instructor.bio}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="px-6 py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-8">Student Reviews</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        ${c.testimonials.map(t => `
+                            <div class="bg-white p-6 rounded-xl border border-gray-200">
+                                <div class="flex gap-1 mb-3">${Array(t.rating).fill('<span class="material-symbols-outlined text-yellow-400 text-sm">star</span>').join('')}</div>
+                                <p class="text-gray-600 mb-4">"${t.text}"</p>
+                                <div class="font-semibold">${t.name}</div>
+                                <div class="text-sm text-gray-500">${t.role}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Form Placeholder -->
+            <section id="payment-form" class="px-6 py-16 bg-gray-50">
+                <div class="max-w-2xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-8 text-center">Borang Pendaftaran</h2>
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+                        <!-- Payment form will be inserted here -->
+                        <p class="text-gray-500 text-center">Payment form placeholder</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="px-6 py-8 text-center text-gray-500 text-sm">
+                © 2026 Ilham Syafiq. All Rights Reserved.
+            </footer>
+        </div>
+    `;
+}
+render();
+</script>
+</body>
+</html>

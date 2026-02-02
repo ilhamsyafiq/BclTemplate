@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Countdown Sale Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<script>
+const CONFIG = {
+    brand: { name: "MegaSale", icon: "bolt", copyright: "© 2026 Ilham Syafiq. All Rights Reserved." },
+    // SET YOUR COUNTDOWN END DATE HERE (YYYY, MM-1, DD, HH, MM, SS)
+    countdown: {
+        endDate: new Date(2026, 11, 31, 23, 59, 59), // Dec 31, 2026
+        title: "Flash Sale Tamat Dalam",
+        expiredMessage: "Sale Telah Tamat!"
+    },
+    hero: {
+        badge: "⚡ FLASH SALE",
+        title: "Diskaun Gila <span class='text-yellow-400'>70%</span> Untuk Semua Item",
+        description: "Jangan lepaskan peluang ini! Stok terhad, harga terendah sepanjang tahun."
+    },
+    products: [
+        { name: "Smart Watch Pro", price: "RM149", original: "RM499", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400", discount: "70%" },
+        { name: "Wireless Speaker", price: "RM89", original: "RM299", image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400", discount: "70%" },
+        { name: "Leather Wallet", price: "RM59", original: "RM199", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400", discount: "70%" },
+        { name: "Sunglasses", price: "RM79", original: "RM259", image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400", discount: "70%" }
+    ],
+    cta: { text: "SHOP NOW", link: "#" },
+    urgency: "⚠️ Hanya tinggal 23 unit sahaja!"
+};
+</script>
+<style>
+body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.pulse-animation { animation: pulse 2s infinite; }
+</style>
+<div id="app"></div>
+
+<script>
+function updateCountdown() {
+    const c = CONFIG;
+    const now = new Date().getTime();
+    const end = c.countdown.endDate.getTime();
+    const diff = end - now;
+
+    if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = `<div class="text-2xl font-bold text-red-400">${c.countdown.expiredMessage}</div>`;
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('countdown').innerHTML = `
+        <div class="flex gap-4 justify-center">
+            <div class="bg-white/10 backdrop-blur rounded-xl p-4 min-w-[80px]">
+                <div class="text-4xl md:text-5xl font-bold text-white">${String(days).padStart(2, '0')}</div>
+                <div class="text-sm text-gray-400 mt-1">Hari</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-4 min-w-[80px]">
+                <div class="text-4xl md:text-5xl font-bold text-white">${String(hours).padStart(2, '0')}</div>
+                <div class="text-sm text-gray-400 mt-1">Jam</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-4 min-w-[80px]">
+                <div class="text-4xl md:text-5xl font-bold text-white">${String(minutes).padStart(2, '0')}</div>
+                <div class="text-sm text-gray-400 mt-1">Minit</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur rounded-xl p-4 min-w-[80px]">
+                <div class="text-4xl md:text-5xl font-bold text-yellow-400">${String(seconds).padStart(2, '0')}</div>
+                <div class="text-sm text-gray-400 mt-1">Saat</div>
+            </div>
+        </div>
+    `;
+}
+
+function render() {
+    const c = CONFIG;
+    document.getElementById('app').innerHTML = `
+        <div class="min-h-screen text-white">
+            <!-- Floating particles -->
+            <div class="fixed inset-0 -z-10 overflow-hidden">
+                <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-yellow-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-red-500/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <!-- Top Banner -->
+            <div class="bg-gradient-to-r from-red-600 to-orange-500 py-3 px-6 text-center">
+                <span class="font-semibold">${c.urgency}</span>
+            </div>
+
+            <!-- Nav -->
+            <nav class="px-6 py-4">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-yellow-400 text-3xl">${c.brand.icon}</span>
+                        <span class="font-bold text-2xl">${c.brand.name}</span>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Hero with Countdown -->
+            <section class="px-6 py-16 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <span class="inline-block bg-red-500 px-4 py-2 rounded-full text-sm font-bold mb-6 pulse-animation">${c.hero.badge}</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-6">${c.hero.title}</h1>
+                    <p class="text-xl text-gray-300 mb-10">${c.hero.description}</p>
+
+                    <!-- Countdown -->
+                    <div class="mb-8">
+                        <div class="text-lg text-gray-400 mb-4">${c.countdown.title}</div>
+                        <div id="countdown"></div>
+                    </div>
+
+                    <a href="${c.cta.link}" class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-12 py-5 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-lg shadow-yellow-500/30">
+                        ${c.cta.text} →
+                    </a>
+                </div>
+            </section>
+
+            <!-- Products -->
+            <section class="px-6 py-16">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12">🔥 Hot Deals</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${c.products.map(p => `
+                            <div class="bg-white/5 backdrop-blur rounded-2xl overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors group">
+                                <div class="relative">
+                                    <img src="${p.image}" class="w-full h-48 object-cover"/>
+                                    <span class="absolute top-3 left-3 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">-${p.discount}</span>
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="font-semibold text-lg mb-2">${p.name}</h3>
+                                    <div class="flex items-baseline gap-2">
+                                        <span class="text-2xl font-bold text-yellow-400">${p.price}</span>
+                                        <span class="text-gray-500 line-through">${p.original}</span>
+                                    </div>
+                                    <button class="w-full mt-4 bg-white/10 hover:bg-yellow-500 hover:text-black py-3 rounded-xl font-semibold transition-colors">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </section>
+
+            <footer class="border-t border-white/10 px-6 py-8">
+                <div class="text-center text-gray-500 text-sm">${c.brand.copyright}</div>
+            </footer>
+        </div>
+    `;
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+render();
+</script>
+</body>
+</html>

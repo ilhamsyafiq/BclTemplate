@@ -1,0 +1,13 @@
+# VS Code Local History
+.history/
+
+# Claude settings (local)
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
