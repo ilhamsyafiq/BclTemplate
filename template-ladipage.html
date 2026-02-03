@@ -2,248 +2,729 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landingpage Title</title>
-    <meta name="description" content="Your product description here">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Produk Premium - Landing Page</title>
+    <meta name="description" content="Dapatkan produk berkualiti tinggi dengan harga istimewa">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://w.ladicdn.com/v5/source/ladipagev3.min.js?v=1770003319790" as="script">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* LadiPage Reset & Base */
-        *, *::before, *::after { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; font: inherit; vertical-align: baseline; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { font-family: "Open Sans", sans-serif; font-size: 14px; line-height: 1.6; background-color: #fff; color: #333; }
+        /* Reset & Base */
+        *, *::before, *::after { margin: 0; padding: 0; border: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        body { font-family: "Open Sans", sans-serif; font-size: 14px; line-height: 1.6; background-color: #fff; color: #333; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; height: auto; }
+        img { max-width: 100%; height: auto; display: block; }
 
-        /* LadiPage Layout */
-        .ladi-wraper { width: 100%; min-height: 100%; overflow: hidden; }
-        .ladi-container { position: relative; margin: 0 auto; max-width: 960px; padding: 0 15px; }
-        .ladi-section { position: relative; width: 100%; }
-        .ladi-section-background { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; overflow: hidden; background-size: cover; background-position: center; }
-        .ladi-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        /* Layout */
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 60px 0; }
+        .section-dark { background: #1a1a2e; color: #fff; }
+        .section-gray { background: #f5f5f5; }
+        .section-yellow { background: #ffc700; }
 
-        /* Elements */
-        .ladi-box { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .ladi-headline { font-weight: 700; line-height: 1.2; }
-        .ladi-paragraph { line-height: 1.6; }
-        .ladi-button { display: inline-block; padding: 12px 30px; border-radius: 25px; font-weight: 600; text-align: center; cursor: pointer; transition: all 0.3s ease; }
-        .ladi-button:hover { transform: translateY(-2px); }
-        .ladi-line { height: 3px; background: #ffc700; }
-        .ladi-image { border-radius: 8px; overflow: hidden; }
+        /* Typography */
+        .text-center { text-align: center; }
+        .text-white { color: #fff; }
+        .text-yellow { color: #ffc700; }
+        .text-red { color: #e53935; }
+        .text-gray { color: #666; }
+        .font-bold { font-weight: 700; }
+        .font-italic { font-style: italic; }
 
-        /* Hero Section */
-        .hero-section { min-height: 500px; display: flex; align-items: center; position: relative; }
-        .hero-section .ladi-section-background { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600'); }
-        .hero-content { position: relative; z-index: 1; text-align: center; color: #fff; padding: 60px 20px; }
-        .hero-title { font-size: 48px; font-weight: 700; font-style: italic; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .hero-subtitle { font-size: 18px; margin-bottom: 10px; opacity: 0.9; }
-        .hero-badge { display: inline-block; background: #ffc700; color: #000; padding: 8px 20px; border-radius: 20px; font-weight: 700; margin-top: 20px; }
-        .hero-cta { margin-top: 30px; }
-        .hero-cta .ladi-button { background: transparent; border: 2px solid #ffc700; color: #fff; }
-        .hero-cta .ladi-button:hover { background: #ffc700; color: #000; }
-
-        /* Products Section */
-        .products-section { padding: 60px 0; background: #fff; }
+        /* Section Header */
         .section-header { text-align: center; margin-bottom: 40px; }
-        .section-title { font-size: 28px; color: #2b2b2b; margin-bottom: 10px; }
-        .section-line { width: 80px; height: 3px; background: #ffc700; margin: 0 auto; }
+        .section-badge { display: inline-block; background: #ffc700; color: #000; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 15px; }
+        .section-title { font-size: 28px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+        .section-subtitle { font-size: 16px; color: #666; max-width: 600px; margin: 0 auto; }
+        .section-line { width: 80px; height: 4px; background: #ffc700; margin: 15px auto; }
 
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 40px; }
-        .product-card { border: 1px solid #dedede; border-radius: 8px; overflow: hidden; transition: all 0.3s ease; }
-        .product-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.15); transform: translateY(-5px); }
-        .product-image { height: 280px; background-size: cover; background-position: center; }
-        .product-info { padding: 20px; text-align: center; }
-        .product-name { font-size: 14px; color: #474747; margin-bottom: 10px; line-height: 1.4; }
-        .product-line { width: 60px; height: 3px; background: #ffc700; margin: 0 auto; }
+        /* Buttons */
+        .btn { display: inline-block; padding: 15px 40px; border-radius: 30px; font-weight: 700; font-size: 16px; text-align: center; cursor: pointer; transition: all 0.3s ease; }
+        .btn-yellow { background: #ffc700; color: #000; }
+        .btn-yellow:hover { background: #ffdb4d; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,199,0,0.3); }
+        .btn-outline { background: transparent; border: 2px solid #ffc700; color: #fff; }
+        .btn-outline:hover { background: #ffc700; color: #000; }
+        .btn-red { background: #e53935; color: #fff; }
+        .btn-red:hover { background: #c62828; }
+        .btn-block { display: block; width: 100%; }
 
-        /* Features Section */
-        .features-section { padding: 60px 0; background: #f9f9f9; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .feature-card { background: #fff; padding: 30px; border-radius: 8px; text-align: center; }
-        .feature-icon { width: 60px; height: 60px; background: #ffc700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; }
-        .feature-title { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
-        .feature-desc { font-size: 14px; color: #666; }
+        /* ===== HERO SECTION ===== */
+        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600') center/cover; }
+        .hero-content { text-align: center; color: #fff; padding: 40px 20px; }
+        .hero-badge { display: inline-block; background: #e53935; color: #fff; padding: 8px 20px; border-radius: 5px; font-size: 14px; font-weight: 700; margin-bottom: 20px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .hero-title { font-size: 42px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero-subtitle { font-size: 18px; margin-bottom: 25px; opacity: 0.9; }
+        .hero-price { margin: 30px 0; }
+        .hero-price .old-price { font-size: 24px; text-decoration: line-through; opacity: 0.6; }
+        .hero-price .new-price { font-size: 48px; font-weight: 800; color: #ffc700; }
+        .hero-price .discount { display: inline-block; background: #e53935; padding: 5px 15px; border-radius: 5px; font-weight: 700; margin-left: 10px; }
+        .hero-features { display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
+        .hero-feature { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+        .hero-feature .icon { color: #ffc700; font-size: 18px; }
 
-        /* Testimonials Section */
-        .testimonials-section { padding: 60px 0; background: #fff; }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .testimonial-card { background: #f9f9f9; padding: 30px; border-radius: 8px; }
-        .testimonial-text { font-style: italic; color: #555; margin-bottom: 20px; line-height: 1.6; }
-        .testimonial-author { display: flex; align-items: center; gap: 15px; }
-        .testimonial-avatar { width: 50px; height: 50px; background: #ffc700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; }
-        .testimonial-name { font-weight: 600; }
-        .testimonial-stars { color: #ffc700; margin-top: 5px; }
+        /* ===== URGENCY BAR ===== */
+        .urgency-bar { background: #e53935; color: #fff; padding: 15px; text-align: center; }
+        .urgency-bar p { font-weight: 700; font-size: 14px; }
+        .countdown { display: inline-flex; gap: 10px; margin-left: 15px; }
+        .countdown-item { background: #000; padding: 8px 12px; border-radius: 5px; min-width: 50px; }
+        .countdown-item span { display: block; font-size: 20px; font-weight: 800; }
+        .countdown-item small { font-size: 10px; opacity: 0.8; }
 
-        /* CTA Section */
-        .cta-section { padding: 80px 0; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); text-align: center; color: #fff; }
-        .cta-title { font-size: 32px; margin-bottom: 15px; }
-        .cta-subtitle { font-size: 16px; opacity: 0.8; margin-bottom: 30px; }
-        .cta-button { background: #ffc700; color: #000; padding: 15px 40px; font-size: 16px; }
-        .cta-button:hover { background: #ffdb4d; }
+        /* ===== PROBLEM SECTION ===== */
+        .problem-list { max-width: 700px; margin: 0 auto; }
+        .problem-item { display: flex; gap: 15px; padding: 20px; background: #fff; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #e53935; }
+        .problem-icon { font-size: 24px; color: #e53935; }
+        .problem-text h4 { font-weight: 700; margin-bottom: 5px; }
+        .problem-text p { color: #666; font-size: 14px; }
 
-        /* Payment Section */
-        .payment-section { padding: 40px 0; background: #fff; }
-        .payment-box { max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #262626, #171717); border: 1px solid #404040; border-radius: 1.5rem; padding: 2rem; }
-        .payment-copyright { margin-top: 1.5rem; font-size: 0.875rem; color: #6b7280; text-align: center; }
+        /* ===== SOLUTION SECTION ===== */
+        .solution-box { background: linear-gradient(135deg, #ffc700 0%, #ff9800 100%); border-radius: 20px; padding: 40px; text-align: center; color: #000; }
+        .solution-box h3 { font-size: 24px; font-weight: 800; margin-bottom: 15px; }
+        .solution-box p { font-size: 16px; max-width: 500px; margin: 0 auto; }
 
-        /* Responsive */
+        /* ===== PRODUCTS SECTION ===== */
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .product-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .product-image { height: 200px; background-size: cover; background-position: center; position: relative; }
+        .product-badge { position: absolute; top: 10px; left: 10px; background: #e53935; color: #fff; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+        .product-info { padding: 20px; }
+        .product-name { font-weight: 700; font-size: 16px; margin-bottom: 10px; }
+        .product-desc { font-size: 13px; color: #666; margin-bottom: 15px; }
+        .product-price { display: flex; align-items: center; gap: 10px; }
+        .product-price .old { text-decoration: line-through; color: #999; font-size: 14px; }
+        .product-price .new { font-size: 20px; font-weight: 800; color: #e53935; }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .benefit-card { background: #fff; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .benefit-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #ffc700, #ff9800); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 24px; color: #fff; }
+        .benefit-title { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+        .benefit-desc { font-size: 13px; color: #666; }
+
+        /* ===== HOW IT WORKS ===== */
+        .steps { max-width: 600px; margin: 0 auto; }
+        .step { display: flex; gap: 20px; margin-bottom: 30px; position: relative; }
+        .step:not(:last-child)::after { content: ''; position: absolute; left: 25px; top: 60px; width: 2px; height: calc(100% - 30px); background: #ffc700; }
+        .step-number { width: 50px; height: 50px; background: #ffc700; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; flex-shrink: 0; }
+        .step-content h4 { font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+        .step-content p { color: #666; font-size: 14px; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid { display: grid; gap: 20px; }
+        .testimonial { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .testimonial-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .testimonial-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ffc700, #ff9800); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 18px; }
+        .testimonial-info h4 { font-weight: 700; font-size: 15px; }
+        .testimonial-info .stars { color: #ffc700; font-size: 14px; }
+        .testimonial-text { font-style: italic; color: #555; line-height: 1.7; }
+        .testimonial-text::before { content: '"'; font-size: 40px; color: #ffc700; line-height: 0; vertical-align: -15px; margin-right: 5px; }
+
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .comparison-table th, .comparison-table td { padding: 15px; text-align: center; border-bottom: 1px solid #eee; }
+        .comparison-table th { background: #1a1a2e; color: #fff; font-weight: 700; }
+        .comparison-table th:first-child { text-align: left; }
+        .comparison-table td:first-child { text-align: left; font-weight: 600; }
+        .comparison-table .highlight { background: #fffde7; }
+        .check { color: #4caf50; font-size: 20px; }
+        .cross { color: #e53935; font-size: 20px; }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-list { max-width: 700px; margin: 0 auto; }
+        .faq-item { background: #fff; border-radius: 10px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .faq-question { padding: 20px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: '+'; font-size: 24px; color: #ffc700; }
+        .faq-question.active::after { content: '-'; }
+        .faq-answer { padding: 0 20px 20px; color: #666; display: none; }
+        .faq-answer.show { display: block; }
+
+        /* ===== GUARANTEE SECTION ===== */
+        .guarantee-box { background: linear-gradient(135deg, #4caf50, #2e7d32); border-radius: 20px; padding: 40px; text-align: center; color: #fff; }
+        .guarantee-icon { font-size: 60px; margin-bottom: 20px; }
+        .guarantee-title { font-size: 24px; font-weight: 800; margin-bottom: 15px; }
+        .guarantee-text { font-size: 16px; max-width: 500px; margin: 0 auto; opacity: 0.9; }
+
+        /* ===== BONUS SECTION ===== */
+        .bonus-grid { display: grid; gap: 20px; }
+        .bonus-card { background: #fff; border-radius: 15px; padding: 25px; display: flex; gap: 20px; align-items: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: 2px dashed #ffc700; }
+        .bonus-icon { width: 60px; height: 60px; background: #ffc700; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+        .bonus-info h4 { font-weight: 700; font-size: 16px; margin-bottom: 5px; }
+        .bonus-info p { font-size: 13px; color: #666; }
+        .bonus-value { font-size: 12px; color: #e53935; font-weight: 700; margin-top: 5px; }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 80px 20px; text-align: center; }
+        .final-cta .price-box { background: #fff; border-radius: 20px; padding: 40px; max-width: 500px; margin: 30px auto; }
+        .final-cta .total-value { font-size: 14px; color: #666; margin-bottom: 10px; }
+        .final-cta .total-value span { text-decoration: line-through; }
+        .final-cta .final-price { font-size: 48px; font-weight: 800; color: #e53935; }
+        .final-cta .final-price small { font-size: 18px; color: #666; font-weight: 400; }
+        .final-cta .savings { background: #e8f5e9; color: #2e7d32; padding: 10px 20px; border-radius: 10px; font-weight: 700; margin: 20px 0; display: inline-block; }
+
+        /* ===== SOCIAL PROOF ===== */
+        .social-proof { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 30px 0; }
+        .social-item { text-align: center; }
+        .social-number { font-size: 32px; font-weight: 800; color: #ffc700; }
+        .social-label { font-size: 12px; color: #666; }
+
+        /* ===== PAYMENT SECTION ===== */
+        .payment-section { padding: 40px 20px; background: #f9f9f9; }
+        .payment-box { max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #262626, #171717); border: 1px solid #404040; border-radius: 20px; padding: 30px; }
+        .payment-copyright { margin-top: 20px; font-size: 13px; color: #6b7280; text-align: center; }
+
+        /* ===== FOOTER ===== */
+        .footer { background: #1a1a2e; color: #fff; padding: 30px 20px; text-align: center; }
+        .footer p { font-size: 13px; opacity: 0.7; }
+
+        /* ===== FLOATING CTA ===== */
+        .floating-cta { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; padding: 15px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 1000; display: none; }
+        .floating-cta .btn { width: 100%; }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .hero-title { font-size: 32px; }
-            .section-title { font-size: 24px; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .product-image { height: 200px; }
-            .cta-title { font-size: 24px; }
-        }
-        @media (max-width: 480px) {
-            .products-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 28px; }
+            .hero-price .new-price { font-size: 36px; }
+            .section-title { font-size: 24px; }
+            .products-grid { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .hero-features { flex-direction: column; gap: 15px; }
+            .countdown { display: flex; margin-left: 0; margin-top: 10px; }
+            .comparison-table { font-size: 12px; }
+            .comparison-table th, .comparison-table td { padding: 10px 5px; }
+            .floating-cta { display: block; }
+            .section { padding: 40px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 24px; }
+            .product-image { height: 180px; }
+            .social-proof { gap: 20px; }
+            .social-number { font-size: 24px; }
         }
     </style>
 </head>
 <body>
-    <div class="ladi-wraper">
-        <!-- Hero Section -->
-        <section class="ladi-section hero-section">
-            <div class="ladi-section-background"></div>
-            <div class="ladi-container">
-                <div class="hero-content">
-                    <p class="hero-subtitle">100% PREMIUM QUALITY</p>
-                    <h1 class="hero-title">Koleksi Terbaik</h1>
-                    <p class="hero-subtitle">Produk berkualiti tinggi untuk gaya hidup anda</p>
-                    <span class="hero-badge">20-50% DISKAUN</span>
-                    <div class="hero-cta">
-                        <a href="#produk" class="ladi-button">LIHAT KOLEKSI</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Products Section -->
-        <section id="produk" class="ladi-section products-section">
-            <div class="ladi-container">
-                <div class="section-header">
-                    <h2 class="section-title">Produk Pilihan</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="products-grid">
-                    <!-- Product 1 -->
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400')"></div>
-                        <div class="product-info">
-                            <p class="product-name">Produk Premium A<br>Kualiti Terjamin</p>
-                            <div class="product-line"></div>
-                        </div>
-                    </div>
-                    <!-- Product 2 -->
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400')"></div>
-                        <div class="product-info">
-                            <p class="product-name">Produk Premium B<br>Pilihan Terbaik</p>
-                            <div class="product-line"></div>
-                        </div>
-                    </div>
-                    <!-- Product 3 -->
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400')"></div>
-                        <div class="product-info">
-                            <p class="product-name">Produk Premium C<br>Teknologi Terkini</p>
-                            <div class="product-line"></div>
-                        </div>
-                    </div>
-                    <!-- Product 4 -->
-                    <div class="product-card">
-                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400')"></div>
-                        <div class="product-info">
-                            <p class="product-name">Produk Premium D<br>Elegan & Praktikal</p>
-                            <div class="product-line"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="ladi-section features-section">
-            <div class="ladi-container">
-                <div class="section-header">
-                    <h2 class="section-title">Kenapa Pilih Kami?</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">&#10003;</div>
-                        <h3 class="feature-title">Kualiti Terjamin</h3>
-                        <p class="feature-desc">Setiap produk melalui kawalan kualiti yang ketat sebelum sampai ke tangan anda</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">&#36;</div>
-                        <h3 class="feature-title">Harga Berbaloi</h3>
-                        <p class="feature-desc">Dapatkan nilai terbaik untuk wang anda dengan harga yang kompetitif</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">&#9889;</div>
-                        <h3 class="feature-title">Penghantaran Pantas</h3>
-                        <p class="feature-desc">Pesanan anda akan diproses dan dihantar dalam masa 24 jam</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="ladi-section testimonials-section">
-            <div class="ladi-container">
-                <div class="section-header">
-                    <h2 class="section-title">Apa Kata Pelanggan</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Produk sangat berkualiti! Penghantaran cepat dan pembungkusan kemas. Pasti akan beli lagi!"</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">A</div>
-                            <div>
-                                <p class="testimonial-name">Ahmad Rizal</p>
-                                <p class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Layanan pelanggan sangat baik. Respond cepat dan membantu. Highly recommended!"</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">S</div>
-                            <div>
-                                <p class="testimonial-name">Siti Aminah</p>
-                                <p class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="ladi-section cta-section">
-            <div class="ladi-container">
-                <h2 class="cta-title">Jangan Lepaskan Peluang!</h2>
-                <p class="cta-subtitle">Dapatkan produk kegemaran anda sekarang dengan harga istimewa</p>
-                <a href="#harga" class="ladi-button cta-button">BELI SEKARANG</a>
-            </div>
-        </section>
-
-        <!-- BCL Payment Section -->
-        <section id="harga" class="ladi-section payment-section">
-            <div class="ladi-container">
-                <div class="payment-box">
-                    <div id="bcl-payment-form" data-url="https://intern.bcl.my/embed/form/sample-custom-html"></div>
-                    <script src="https://bcl.my/js/bc-encrypted-payment-embed.js"></script>
-                    <p class="payment-copyright">© 2026 Ilham Syafiq. All Rights Reserved.</p>
-                </div>
-            </div>
-        </section>
+    <!-- URGENCY BAR -->
+    <div class="urgency-bar">
+        <p>TAWARAN TERHAD! Tamat dalam:
+            <span class="countdown">
+                <span class="countdown-item"><span id="hours">23</span><small>Jam</small></span>
+                <span class="countdown-item"><span id="minutes">59</span><small>Min</small></span>
+                <span class="countdown-item"><span id="seconds">59</span><small>Saat</small></span>
+            </span>
+        </p>
     </div>
 
-    <script src="https://w.ladicdn.com/v5/source/ladipagev3.min.js?v=1770003319790"></script>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">DISKAUN 50% - HARI INI SAHAJA!</span>
+                <h1 class="hero-title">Rahsia Kulit Cantik & Berseri Dalam 14 Hari</h1>
+                <p class="hero-subtitle">Formula eksklusif yang telah membantu 10,000+ wanita Malaysia mendapatkan kulit impian mereka</p>
+
+                <div class="hero-price">
+                    <span class="old-price">RM299</span>
+                    <span class="new-price">RM149</span>
+                    <span class="discount">JIMAT RM150!</span>
+                </div>
+
+                <div class="hero-features">
+                    <span class="hero-feature"><span class="icon">&#10003;</span> 100% Bahan Semulajadi</span>
+                    <span class="hero-feature"><span class="icon">&#10003;</span> Kelulusan KKM</span>
+                    <span class="hero-feature"><span class="icon">&#10003;</span> Jaminan Wang Dikembalikan</span>
+                </div>
+
+                <a href="#harga" class="btn btn-yellow">DAPATKAN SEKARANG</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <div class="section-gray">
+        <div class="container">
+            <div class="social-proof">
+                <div class="social-item">
+                    <div class="social-number">10,000+</div>
+                    <div class="social-label">Pelanggan Gembira</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-number">4.9/5</div>
+                    <div class="social-label">Rating Purata</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-number">98%</div>
+                    <div class="social-label">Kadar Kepuasan</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-number">5 Tahun</div>
+                    <div class="social-label">Pengalaman</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROBLEM SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">MASALAH</span>
+                <h2 class="section-title">Adakah Anda Mengalami Masalah Ini?</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="problem-list">
+                <div class="problem-item">
+                    <span class="problem-icon">&#128542;</span>
+                    <div class="problem-text">
+                        <h4>Kulit Kusam & Tidak Berseri</h4>
+                        <p>Walaupun sudah cuba pelbagai produk, kulit masih kelihatan kusam dan tidak bermaya</p>
+                    </div>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">&#128546;</span>
+                    <div class="problem-text">
+                        <h4>Jerawat & Parut Degil</h4>
+                        <p>Jerawat yang berulang dan parut yang sukar hilang menjejaskan keyakinan diri</p>
+                    </div>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">&#128553;</span>
+                    <div class="problem-text">
+                        <h4>Kedutan & Tanda Penuaan</h4>
+                        <p>Garis halus mula kelihatan dan kulit mula kehilangan keanjalannya</p>
+                    </div>
+                </div>
+                <div class="problem-item">
+                    <span class="problem-icon">&#128560;</span>
+                    <div class="problem-text">
+                        <h4>Produk Mahal Tapi Tak Berkesan</h4>
+                        <p>Sudah habis beribu ringgit tetapi masih tidak nampak hasil yang diinginkan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="solution-box">
+                <h3>Kami Ada Penyelesaiannya!</h3>
+                <p>Dengan formula revolusioner yang menggabungkan teknologi terkini dan bahan semulajadi, anda boleh mendapatkan kulit impian dalam masa 14 hari sahaja!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">PRODUK</span>
+                <h2 class="section-title">Set Lengkap Penjagaan Kulit</h2>
+                <p class="section-subtitle">4 produk premium dalam satu set untuk hasil maksimum</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400')">
+                        <span class="product-badge">BESTSELLER</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Cleanser Lembut</h3>
+                        <p class="product-desc">Membersihkan tanpa menjadikan kulit kering</p>
+                        <div class="product-price">
+                            <span class="old">RM79</span>
+                            <span class="new">RM39</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?w=400')">
+                        <span class="product-badge">POPULAR</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Serum Vitamin C</h3>
+                        <p class="product-desc">Mencerahkan dan meratakan tona kulit</p>
+                        <div class="product-price">
+                            <span class="old">RM99</span>
+                            <span class="new">RM49</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400')">
+                        <span class="product-badge">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Moisturizer SPF30</h3>
+                        <p class="product-desc">Melembap dan melindungi dari sinaran UV</p>
+                        <div class="product-price">
+                            <span class="old">RM89</span>
+                            <span class="new">RM44</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400')">
+                        <span class="product-badge">LIMITED</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Night Cream</h3>
+                        <p class="product-desc">Regenerasi kulit semasa tidur</p>
+                        <div class="product-price">
+                            <span class="old">RM109</span>
+                            <span class="new">RM54</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">KELEBIHAN</span>
+                <h2 class="section-title">Kenapa Pilih Produk Kami?</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">&#127807;</div>
+                    <h3 class="benefit-title">100% Semulajadi</h3>
+                    <p class="benefit-desc">Bahan-bahan organik tanpa bahan kimia berbahaya</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">&#9989;</div>
+                    <h3 class="benefit-title">Lulus KKM</h3>
+                    <p class="benefit-desc">Diiktiraf selamat oleh Kementerian Kesihatan Malaysia</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">&#128171;</div>
+                    <h3 class="benefit-title">Hasil Pantas</h3>
+                    <p class="benefit-desc">Lihat perubahan ketara dalam 14 hari pertama</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">&#128176;</div>
+                    <h3 class="benefit-title">Harga Berbaloi</h3>
+                    <p class="benefit-desc">Kualiti premium pada harga mampu milik</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">&#128666;</div>
+                    <h3 class="benefit-title">Penghantaran Percuma</h3>
+                    <p class="benefit-desc">Penghantaran ke seluruh Malaysia tanpa caj</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">&#128274;</div>
+                    <h3 class="benefit-title">Jaminan 30 Hari</h3>
+                    <p class="benefit-desc">Wang dikembalikan jika tidak berpuas hati</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">CARA GUNA</span>
+                <h2 class="section-title">3 Langkah Mudah Untuk Kulit Cantik</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Bersihkan</h4>
+                        <p>Gunakan Cleanser Lembut pada waktu pagi dan malam untuk membersihkan kotoran dan sisa makeup</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Rawat</h4>
+                        <p>Sapukan Serum Vitamin C untuk mencerahkan dan merawat masalah kulit secara mendalam</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Lindungi</h4>
+                        <p>Gunakan Moisturizer SPF30 pada siang hari dan Night Cream pada waktu malam</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">PERBANDINGAN</span>
+                <h2 class="section-title">Produk Kami vs Produk Lain</h2>
+                <div class="section-line"></div>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Ciri-ciri</th>
+                        <th class="highlight">Produk Kami</th>
+                        <th>Produk Lain</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bahan Semulajadi</td>
+                        <td class="highlight"><span class="check">&#10003;</span></td>
+                        <td><span class="cross">&#10007;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kelulusan KKM</td>
+                        <td class="highlight"><span class="check">&#10003;</span></td>
+                        <td><span class="cross">&#10007;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Hasil Dalam 14 Hari</td>
+                        <td class="highlight"><span class="check">&#10003;</span></td>
+                        <td><span class="cross">&#10007;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Jaminan Wang Dikembalikan</td>
+                        <td class="highlight"><span class="check">&#10003;</span></td>
+                        <td><span class="cross">&#10007;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sokongan Pelanggan 24/7</td>
+                        <td class="highlight"><span class="check">&#10003;</span></td>
+                        <td><span class="cross">&#10007;</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">TESTIMONI</span>
+                <h2 class="section-title">Apa Kata Pelanggan Kami</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Aina, 28 tahun</h4>
+                            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Selepas 2 minggu guna, kulit saya jadi lebih cerah dan jerawat makin kurang. Memang berbaloi!</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">S</div>
+                        <div class="testimonial-info">
+                            <h4>Sarah, 35 tahun</h4>
+                            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Saya dah try banyak produk sebelum ni tapi tak berkesan. Produk ni memang lain, nampak hasil dengan cepat!</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">N</div>
+                        <div class="testimonial-info">
+                            <h4>Nurul, 42 tahun</h4>
+                            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Kedutan di muka saya makin kurang dan kulit jadi lebih anjal. Rasa macam 10 tahun lebih muda!</p>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">F</div>
+                        <div class="testimonial-info">
+                            <h4>Farah, 31 tahun</h4>
+                            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">Produk ni sangat lembut pada kulit sensitif saya. Tak ada rasa gatal atau kemerahan langsung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BONUS SECTION -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">BONUS</span>
+                <h2 class="section-title">Bonus Eksklusif Untuk Anda!</h2>
+                <p class="section-subtitle">Beli hari ini dan dapatkan bonus bernilai RM200</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="bonus-grid">
+                <div class="bonus-card">
+                    <div class="bonus-icon">&#128218;</div>
+                    <div class="bonus-info">
+                        <h4>E-Book Panduan Penjagaan Kulit</h4>
+                        <p>Panduan lengkap dari pakar dermatologi</p>
+                        <span class="bonus-value">Nilai: RM79</span>
+                    </div>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-icon">&#127873;</div>
+                    <div class="bonus-info">
+                        <h4>Travel Size Kit</h4>
+                        <p>Set mini untuk dibawa ke mana-mana</p>
+                        <span class="bonus-value">Nilai: RM59</span>
+                    </div>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-icon">&#128241;</div>
+                    <div class="bonus-info">
+                        <h4>Konsultasi Percuma</h4>
+                        <p>Sesi konsultasi dengan pakar kulit kami</p>
+                        <span class="bonus-value">Nilai: RM99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUARANTEE SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="guarantee-box">
+                <div class="guarantee-icon">&#128737;</div>
+                <h3 class="guarantee-title">Jaminan 30 Hari Wang Dikembalikan</h3>
+                <p class="guarantee-text">Jika anda tidak berpuas hati dengan produk kami dalam tempoh 30 hari, kami akan kembalikan wang anda 100% tanpa soalan!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Soalan Lazim</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Berapa lama untuk nampak hasil?</div>
+                    <div class="faq-answer">Kebanyakan pelanggan mula nampak perubahan dalam 7-14 hari penggunaan berterusan. Hasil optimum biasanya dicapai selepas 30 hari.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Adakah sesuai untuk kulit sensitif?</div>
+                    <div class="faq-answer">Ya! Produk kami diformulasikan khas untuk semua jenis kulit termasuk kulit sensitif. Bahan-bahan semulajadi yang digunakan adalah lembut dan tidak menyebabkan iritasi.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Bagaimana cara pembayaran?</div>
+                    <div class="faq-answer">Kami menerima pelbagai kaedah pembayaran termasuk FPX, kad kredit/debit, dan e-wallet. Semua transaksi adalah selamat dan terjamin.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Berapa lama penghantaran?</div>
+                    <div class="faq-answer">Penghantaran mengambil masa 2-4 hari bekerja untuk Semenanjung Malaysia dan 5-7 hari untuk Sabah/Sarawak. Penghantaran adalah PERCUMA untuk semua pesanan.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Boleh refund jika tidak sesuai?</div>
+                    <div class="faq-answer">Ya! Kami menawarkan jaminan wang dikembalikan dalam tempoh 30 hari. Jika anda tidak berpuas hati, hubungi kami dan kami akan proses refund tanpa soalan.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="harga">
+        <div class="container">
+            <h2 class="section-title text-white">Dapatkan Set Lengkap Sekarang!</h2>
+            <p class="text-white" style="opacity: 0.8; margin-bottom: 20px;">Tawaran istimewa untuk 100 pembeli pertama sahaja</p>
+
+            <div class="price-box">
+                <p class="total-value">Jumlah Nilai: <span>RM376</span></p>
+                <p class="final-price">RM149 <small>sahaja</small></p>
+                <span class="savings">&#127881; Anda Jimat RM227!</span>
+
+                <div style="margin-top: 20px;">
+                    <a href="#payment" class="btn btn-red btn-block">BELI SEKARANG - RM149</a>
+                </div>
+
+                <p style="margin-top: 15px; font-size: 12px; color: #666;">
+                    &#128274; Pembayaran Selamat | &#128666; Penghantaran Percuma | &#9989; Jaminan 30 Hari
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BCL PAYMENT SECTION -->
+    <section id="payment" class="payment-section">
+        <div class="payment-box">
+            <div id="bcl-payment-form" data-url="https://intern.bcl.my/embed/form/sample-custom-html"></div>
+            <script src="https://bcl.my/js/bc-encrypted-payment-embed.js"></script>
+            <p class="payment-copyright">© 2026 Ilham Syafiq. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Ilham Syafiq. All Rights Reserved.</p>
+            <p style="margin-top: 10px;">Disclaimer: Hasil mungkin berbeza bagi setiap individu</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING CTA (Mobile) -->
+    <div class="floating-cta">
+        <a href="#payment" class="btn btn-red">BELI SEKARANG - RM149</a>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function startCountdown() {
+            let hours = 23, minutes = 59, seconds = 59;
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) { seconds = 59; minutes--; }
+                if (minutes < 0) { minutes = 59; hours--; }
+                if (hours < 0) { hours = 23; minutes = 59; seconds = 59; }
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }, 1000);
+        }
+        startCountdown();
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isActive = element.classList.contains('active');
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('show'));
+            if (!isActive) {
+                element.classList.add('active');
+                answer.classList.add('show');
+            }
+        }
+
+        // Show floating CTA on scroll
+        window.addEventListener('scroll', () => {
+            const floatingCta = document.querySelector('.floating-cta');
+            if (window.scrollY > 500) {
+                floatingCta.style.display = 'block';
+            } else {
+                floatingCta.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
