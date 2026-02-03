@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="ms" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCL.MY - Platform Jualan Online Percuma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-shine {
+            background: linear-gradient(to right, #3B82F6 20%, #8B5CF6 40%, #8B5CF6 60%, #3B82F6 80%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="h-full bg-neutral-950 text-white overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">B</span>
+                </div>
+                <span class="font-bold text-lg">BCL.MY</span>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-sm text-neutral-400">
+                <a href="#features" class="hover:text-white transition-colors">Features</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">Testimoni</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </div>
+            <a href="#daftar" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold text-sm transition-all">
+                Daftar Percuma
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-28 pb-16 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-transparent"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 mb-8">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                <span class="text-blue-400 text-sm font-medium">Platform Jualan Online #1 Malaysia</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8 tracking-tight">
+                Bina Kedai Online <span class="text-shine">PERCUMA</span><br>Dalam 5 Minit
+            </h1>
+
+            <p class="text-lg sm:text-xl text-neutral-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Platform all-in-one untuk terima bayaran FPX, E-Wallet & Kad Kredit. Siap dengan sistem invois automatik, database pelanggan & pixel tracking.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
+                <a href="#daftar" class="pulse-btn w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-blue-500/30">
+                    Mula Sekarang - PERCUMA
+                </a>
+                <a href="#features" class="text-neutral-400 hover:text-white transition-colors flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                    Lihat Features
+                </a>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 text-sm text-neutral-400">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>100% Percuma</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Tanpa Coding</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Siap 5 Minit</span>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4 mt-16 max-w-2xl mx-auto">
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <div class="text-3xl sm:text-4xl font-bold text-blue-400 mb-1">10K+</div>
+                    <div class="text-neutral-400 text-sm">Pengguna Aktif</div>
+                </div>
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <div class="text-3xl sm:text-4xl font-bold text-purple-400 mb-1">RM5M+</div>
+                    <div class="text-neutral-400 text-sm">Jualan Diproses</div>
+                </div>
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <div class="text-3xl sm:text-4xl font-bold text-green-400 mb-1">99.9%</div>
+                    <div class="text-neutral-400 text-sm">Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-16 px-4 bg-neutral-900/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-red-500 font-semibold text-sm uppercase tracking-wider">Masalah Biasa</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-3">Pernah Alami Situasi Ini?</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">😫</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Penat Layan WhatsApp</h3>
+                    <p class="text-neutral-400">Kena jawab soalan sama berulang-ulang. "Harga berapa?", "Macam mana nak bayar?"</p>
+                </div>
+
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">💸</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Upah Developer Mahal</h3>
+                    <p class="text-neutral-400">Nak buat website? Ribu-ribu harganya dan ambil masa berminggu!</p>
+                </div>
+
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Tak Ada Database</h3>
+                    <p class="text-neutral-400">Data pelanggan bersepah. Susah nak follow up dan buat marketing.</p>
+                </div>
+
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">🏦</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Susah Terima Bayaran</h3>
+                    <p class="text-neutral-400">Kena check manual setiap kali ada transfer. Boleh silap dan miss payment!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-16 px-4 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <span class="text-blue-500 font-semibold text-sm uppercase tracking-wider">Penyelesaian</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 mb-4">BCL.MY Selesaikan Semua</h2>
+                <p class="text-neutral-300 text-lg max-w-2xl mx-auto">Satu platform untuk semua keperluan jualan online anda.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Auto Payment Gateway</h3>
+                        <p class="text-neutral-400">FPX, E-Wallet, Kad Kredit - semua automatik.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Database Pelanggan</h3>
+                        <p class="text-neutral-400">Semua data tersimpan kemas untuk marketing.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Auto Invois & Email</h3>
+                        <p class="text-neutral-400">Pelanggan terima invois automatik selepas bayar.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg">Pixel & Tracking</h3>
+                        <p class="text-neutral-400">Setup Facebook Pixel untuk retargeting ads.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 px-4 bg-neutral-900/50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-blue-500 font-semibold text-sm uppercase tracking-wider">Features</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-3">Semua Yang Anda Perlukan</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6 float">
+                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Payment Gateway</h3>
+                    <p class="text-neutral-400">Terima bayaran FPX, QR E-Wallet, dan Kad Kredit secara automatik. Duit masuk terus ke akaun anda.</p>
+                </div>
+
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6 float" style="animation-delay: 0.5s;">
+                        <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Database Pelanggan</h3>
+                    <p class="text-neutral-400">Simpan maklumat pelanggan secara automatik. Export ke Excel bila-bila masa untuk marketing.</p>
+                </div>
+
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 float" style="animation-delay: 1s;">
+                        <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Auto Invois</h3>
+                    <p class="text-neutral-400">Invois professional dihantar automatik ke email pelanggan selepas bayaran berjaya.</p>
+                </div>
+
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 float" style="animation-delay: 0.3s;">
+                        <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Pixel Tracking</h3>
+                    <p class="text-neutral-400">Pasang Facebook Pixel & TikTok Pixel untuk track conversion dan retargeting ads.</p>
+                </div>
+
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-pink-500/20 rounded-2xl flex items-center justify-center mb-6 float" style="animation-delay: 0.7s;">
+                        <svg class="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Custom Domain</h3>
+                    <p class="text-neutral-400">Guna domain sendiri untuk nampak lebih professional. kedaianda.com</p>
+                </div>
+
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-6 float" style="animation-delay: 1.2s;">
+                        <svg class="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile Friendly</h3>
+                    <p class="text-neutral-400">Semua page automatik responsive. Cantik di phone, tablet dan desktop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-blue-500 font-semibold text-sm uppercase tracking-wider">Cara Guna</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-3">3 Langkah Mudah</h2>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-gradient-to-r from-neutral-800 to-neutral-900 border-l-4 border-blue-500 rounded-2xl p-6 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-lg">1</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Daftar Akaun Percuma</h3>
+                            <p class="text-neutral-400">Daftar di BCL.MY dalam masa 1 minit. Tiada kad kredit diperlukan. Terus boleh guna.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-neutral-800 to-neutral-900 border-l-4 border-purple-500 rounded-2xl p-6 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-purple-500 text-white rounded-xl flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-lg">2</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Setup Produk & Payment</h3>
+                            <p class="text-neutral-400">Masukkan produk anda, set harga, dan connect payment gateway. Semua dalam satu dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-neutral-800 to-neutral-900 border-l-4 border-green-500 rounded-2xl p-6 card-hover">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-green-500 text-white rounded-xl flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-lg">3</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Mula Terima Jualan!</h3>
+                            <p class="text-neutral-400">Share link kedai anda di social media dan mula terima bayaran 24/7. Duit masuk automatik!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 px-4 bg-neutral-900/50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-blue-500 font-semibold text-sm uppercase tracking-wider">Testimoni</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-3">Apa Kata Pengguna BCL.MY</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-6 card-hover">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                    </div>
+                    <p class="text-neutral-300 mb-6">"Dulu kena layan WhatsApp satu-satu. Sekarang customer terus bayar kat website. Jimat masa sangat!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">A</div>
+                        <div>
+                            <div class="font-semibold">Ahmad Rizal</div>
+                            <div class="text-neutral-500 text-sm">Penjual Produk Digital</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-6 card-hover">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                    </div>
+                    <p class="text-neutral-300 mb-6">"Setup dalam 10 minit je. Siap dengan payment gateway semua. Memang recommended untuk bisnes owner!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">S</div>
+                        <div>
+                            <div class="font-semibold">Siti Nurhaliza</div>
+                            <div class="text-neutral-500 text-sm">Online Coach</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gradient-to-b from-neutral-800 to-neutral-900 border border-neutral-700 rounded-3xl p-6 card-hover">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                    </div>
+                    <p class="text-neutral-300 mb-6">"Best sebab ada database customer. Senang nak buat retargeting dan follow up. Sales naik 3x ganda!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
+                        <div>
+                            <div class="font-semibold">Muhammad Hafiz</div>
+                            <div class="text-neutral-500 text-sm">Dropshipper</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-blue-500 font-semibold text-sm uppercase tracking-wider">FAQ</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-3">Soalan Lazim</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                        <span class="text-blue-500">Q:</span> Adakah BCL.MY benar-benar percuma?
+                    </h3>
+                    <p class="text-neutral-400 pl-6">Ya, 100% percuma untuk daftar dan guna. Kami hanya kenakan yuran kecil untuk setiap transaksi yang berjaya.</p>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                        <span class="text-blue-500">Q:</span> Perlukah saya tahu coding?
+                    </h3>
+                    <p class="text-neutral-400 pl-6">Tidak perlu langsung! BCL.MY direka untuk sesiapa sahaja. Drag and drop, isi form, dan siap.</p>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                        <span class="text-blue-500">Q:</span> Berapa lama untuk setup?
+                    </h3>
+                    <p class="text-neutral-400 pl-6">Dalam masa 5-10 minit sahaja, kedai online anda sudah boleh terima bayaran.</p>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                        <span class="text-blue-500">Q:</span> Payment masuk ke mana?
+                    </h3>
+                    <p class="text-neutral-400 pl-6">Terus masuk ke akaun bank anda. Tiada perantara. Settlement dalam 1-3 hari bekerja.</p>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                        <span class="text-blue-500">Q:</span> Boleh guna domain sendiri?
+                    </h3>
+                    <p class="text-neutral-400 pl-6">Ya! Anda boleh connect custom domain untuk nampak lebih professional.</p>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="bg-neutral-800/50 border border-neutral-700 rounded-2xl p-6">
+                    <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                        <span class="text-blue-500">Q:</span> Ada support kalau stuck?
+                    </h3>
+                    <p class="text-neutral-400 pl-6">Ada! Kami ada support team yang sedia membantu melalui chat dan email.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="daftar" class="py-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-purple-500/10 to-transparent"></div>
+        <div class="absolute top-10 left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <div class="bg-gradient-to-br from-neutral-800 to-neutral-900 border-2 border-blue-500/30 rounded-3xl p-8 md:p-12 text-center">
+                <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 rounded-full px-4 py-2 mb-6">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-green-400 text-sm font-semibold">100% PERCUMA - TIADA YURAN TERSEMBUNYI</span>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Mula Jual Online Hari Ini</h2>
+                <p class="text-neutral-300 text-lg mb-8 max-w-xl mx-auto">
+                    Daftar sekarang dan bina kedai online anda dalam masa 5 minit. Join 10,000+ usahawan yang sudah guna BCL.MY.
+                </p>
+
+                <a href="https://bcl.my" target="_blank" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-5 rounded-full font-bold text-xl transition-all shadow-2xl shadow-blue-500/30 pulse-btn">
+                    Daftar Percuma Sekarang
+                </a>
+
+                <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-neutral-400">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Tiada kad kredit</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Setup 5 minit</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Support 24/7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-neutral-800">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">B</span>
+                    </div>
+                    <span class="font-bold text-lg">BCL.MY</span>
+                </div>
+
+                <p class="text-neutral-500 text-sm">
+                    &copy; 2024 BCL.MY. Platform Jualan Online Percuma.
+                </p>
+
+                <div class="flex items-center gap-4">
+                    <a href="#" class="text-neutral-400 hover:text-white transition-colors">Terma</a>
+                    <a href="#" class="text-neutral-400 hover:text-white transition-colors">Privasi</a>
+                    <a href="#" class="text-neutral-400 hover:text-white transition-colors">Bantuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
